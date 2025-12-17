@@ -301,11 +301,30 @@
     <p>نظام تشغيل تشغيلي مغلق لشركات الليموزين</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
 <script>
-document.getElementById('contact-form').addEventListener('submit',function(e){
+(function(){
+   emailjs.init("PUBLIC_KEY_HERE");
+})();
+</script>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('تم استلام طلبك. سيتم التواصل بعد التقييم.');
-    this.reset();
+
+    emailjs.send("SERVICE_ID", "TEMPLATE_ID", {
+        company_name: document.getElementById("company-name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        main_issue: document.getElementById("main-issue").value
+    }).then(function() {
+        alert("تم استلام طلبك وسيتم التواصل بعد التقييم");
+        document.getElementById("contact-form").reset();
+    }, function(error) {
+        alert("حصل خطأ أثناء الإرسال");
+        console.log(error);
+    });
 });
 </script>
 
