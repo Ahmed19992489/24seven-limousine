@@ -1,102 +1,165 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>24Seven Limousine Core System</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #0f172a;
-      color: #fff;
-      direction: rtl;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-    h2 {
-      color: #38bdf8;
-    }
-    p {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #e5e7eb;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      background: #38bdf8;
-      color: #000;
-      font-size: 18px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-    .section {
-      margin-top: 80px;
-    }
-    input {
-      width: 100%;
-      padding: 15px;
-      margin-top: 15px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>24Seven Limousine Core System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --accent:#38bdf8;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Cairo','Inter',sans-serif;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:80px;
+}
+.lang{
+  cursor:pointer;
+  color:var(--accent);
+  font-weight:600;
+}
+h1{
+  font-size:46px;
+  margin-bottom:20px;
+}
+h2{
+  color:var(--accent);
+  margin-bottom:15px;
+}
+p{
+  font-size:18px;
+  line-height:1.8;
+  color:var(--muted);
+}
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:16px 36px;
+  background:var(--accent);
+  color:#000;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:700;
+  text-decoration:none;
+}
+.section{
+  margin-top:120px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:12px;
+}
+.footer{
+  margin-top:120px;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+}
+</style>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('[data-ar]').forEach(el=>{
+    el.innerText = el.getAttribute(lang === 'ar' ? 'data-ar' : 'data-en');
+  });
+  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+}
+</script>
+
 </head>
-<body>
+<body onload="setLang('ar')">
 
 <div class="container">
 
-  <h1>نظام تشغيل ذكي لشركات الليموزين</h1>
-  <p>سيطر على الحجوزات، السواقين، والحسابات من مكان واحد — بدون فوضى.</p>
-
-  <a class="btn" href="#form">اطلب تجربة مجانية 115 يوم</a>
-
-  <div class="section">
-    <h2>المشكلة اللي في السوق</h2>
-    <p>
-      • الحجوزات بتضيع<br>
-      • خلافات بين السواق والعميل<br>
-      • حسابات غير واضحة<br>
-      • إدارة يدوية مرهقة
-    </p>
+<header>
+  <strong>24Seven Limousine</strong>
+  <div>
+    <span class="lang" onclick="setLang('ar')">AR</span> |
+    <span class="lang" onclick="setLang('en')">EN</span>
   </div>
+</header>
 
-  <div class="section">
-    <h2>الحل</h2>
-    <p>
-      24Seven Limousine Core System بيحوّل شغلك لنظام واحد مقفول:
-      كل تواصل مسجّل، كل حركة موثقة، وكل جنيه محسوب.
-    </p>
-  </div>
+<!-- HERO -->
+<h1 data-ar="نظام تشغيل ذكي لشركات الليموزين"
+    data-en="Smart Operating System for Limousine Companies"></h1>
 
-  <div class="section">
-    <h2>النظام ده معمول لمين؟</h2>
-    <p>
-      • شركات ليموزين<br>
-      • مكاتب تشغيل<br>
-      • أصحاب أساطيل<br>
-      • شغل واتساب وجروبات
-    </p>
-  </div>
+<p data-ar="تحكم كامل في التشغيل، الحسابات، والتواصل — من منصة واحدة مبنية للواقع."
+   data-en="Full control over operations, accounting, and communication — built for real-world operations."></p>
 
-  <div class="section" id="form">
-    <h2>ابدأ التجربة المجانية</h2>
-    <input type="text" placeholder="اسمك">
-    <input type="text" placeholder="رقم الموبايل">
-    <input type="text" placeholder="اسم الشركة (اختياري)">
-    <a class="btn" href="#">إرسال</a>
-  </div>
+<a class="btn" href="#trial"
+   data-ar="ابدأ التجربة المجانية"
+   data-en="Start Free Trial"></a>
+
+<!-- PROBLEM -->
+<div class="section">
+<h2 data-ar="المشكلة في السوق" data-en="The Problem"></h2>
+<p data-ar="تشغيل معتمد على واتساب ومكالمات بدون توثيق، خلافات مستمرة، فلوس بتضيع، وإدارة غير قابلة للتوسع."
+   data-en="Operations relying on WhatsApp and calls without documentation, constant disputes, financial leakage, and unscalable management."></p>
+</div>
+
+<!-- SOLUTION -->
+<div class="section">
+<h2 data-ar="الحل" data-en="The Solution"></h2>
+<p data-ar="24Seven Limousine Core System يحوّل شركتك إلى منظومة تشغيل مقفولة: كل رحلة، كل رسالة، وكل جنيه تحت السيطرة."
+   data-en="24Seven Limousine Core System transforms your company into a closed operating loop: every trip, every message, every pound is under control."></p>
+</div>
+
+<!-- FEATURES -->
+<div class="section">
+<h2 data-ar="المميزات الأساسية" data-en="Core Features"></h2>
+<div class="grid">
+  <div class="card" data-ar="إدارة الرحلات" data-en="Trip Management"></div>
+  <div class="card" data-ar="إدارة السائقين والأسطول" data-en="Drivers & Fleet"></div>
+  <div class="card" data-ar="محرك حسابات متكامل" data-en="Accounting Engine"></div>
+  <div class="card" data-ar="توثيق كامل للتواصل" data-en="Communication Logging"></div>
+  <div class="card" data-ar="بوت تلجرام تشغيلي" data-en="Operational Telegram Bot"></div>
+  <div class="card" data-ar="تقارير وتحليل أداء" data-en="Reports & Analytics"></div>
+</div>
+</div>
+
+<!-- WHY -->
+<div class="section">
+<h2 data-ar="لماذا 24Seven؟" data-en="Why 24Seven?"></h2>
+<p data-ar="مش نظام أجنبي متعرب. ده سيستم اتبنى من قلب السوق المصري، لتشغيل حقيقي مش Demo."
+   data-en="Not a translated foreign system. Built from inside the Egyptian market for real operations, not demos."></p>
+</div>
+
+<!-- CTA -->
+<div class="section" id="trial">
+<h2 data-ar="ابدأ تجربة تشغيل حقيقية" data-en="Start a Real Trial"></h2>
+<p data-ar="جرّب النظام على شغلك الفعلي. بدون التزام."
+   data-en="Try the system on your real operations. No commitment."></p>
+<a class="btn" href="#" data-ar="اطلب التجربة الآن" data-en="Request Trial"></a>
+</div>
+
+<div class="footer">
+© 24Seven Limousine Core System
+</div>
 
 </div>
 
