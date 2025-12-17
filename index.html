@@ -1,167 +1,248 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>24Seven Limousine Core System</title>
+  <meta charset="UTF-8" />
+  <title>24Seven Limousine Core System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0b1220;
+      --bg-card: #111a2e;
+      --primary: #38bdf8;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-soft: rgba(255,255,255,0.06);
+    }
 
-<style>
-:root{
-  --bg:#0b1220;
-  --card:#111a2e;
-  --accent:#38bdf8;
-  --text:#e5e7eb;
-  --muted:#9ca3af;
-}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Cairo','Inter',sans-serif;
-}
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:80px 20px;
-}
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:80px;
-}
-.lang{
-  cursor:pointer;
-  color:var(--accent);
-  font-weight:600;
-}
-h1{
-  font-size:46px;
-  margin-bottom:20px;
-}
-h2{
-  color:var(--accent);
-  margin-bottom:15px;
-}
-p{
-  font-size:18px;
-  line-height:1.8;
-  color:var(--muted);
-}
-.btn{
-  display:inline-block;
-  margin-top:30px;
-  padding:16px 36px;
-  background:var(--accent);
-  color:#000;
-  border-radius:8px;
-  font-size:18px;
-  font-weight:700;
-  text-decoration:none;
-}
-.section{
-  margin-top:120px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-}
-.card{
-  background:var(--card);
-  padding:30px;
-  border-radius:12px;
-}
-.footer{
-  margin-top:120px;
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
-}
-</style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
 
-<script>
-function setLang(lang){
-  document.querySelectorAll('[data-ar]').forEach(el=>{
-    el.innerText = el.getAttribute(lang === 'ar' ? 'data-ar' : 'data-en');
-  });
-  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
-}
-</script>
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: var(--text-main);
+      line-height: 1.8;
+    }
 
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(2,6,23,0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+      z-index: 100;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .lang {
+      color: var(--primary);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: #020617;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-bottom: 50px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #0b1220, #060b16);
+      border: 1px solid var(--border-soft);
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .steps .card {
+      position: relative;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+  </style>
 </head>
-<body onload="setLang('ar')">
 
-<div class="container">
+<body>
 
 <header>
-  <strong>24Seven Limousine</strong>
-  <div>
-    <span class="lang" onclick="setLang('ar')">AR</span> |
-    <span class="lang" onclick="setLang('en')">EN</span>
+  <div class="container">
+    <div class="logo">24Seven Limousine</div>
+    <div class="lang">AR | EN</div>
   </div>
 </header>
 
-<!-- HERO -->
-<h1 data-ar="نظام تشغيل ذكي لشركات الليموزين"
-    data-en="Smart Operating System for Limousine Companies"></h1>
+<section class="hero">
+  <div class="container">
+    <h1>نظام تشغيل ذكي لشركات الليموزين</h1>
+    <p>
+      تحكم كامل في التشغيل، الحسابات، والتواصل من منصة واحدة.
+      سيستم حقيقي مبني من قلب السوق – مش عرض تجريبي.
+    </p>
+    <a href="#contact" class="btn">ابدأ تجربة تشغيل حقيقية</a>
+  </div>
+</section>
 
-<p data-ar="تحكم كامل في التشغيل، الحسابات، والتواصل — من منصة واحدة مبنية للواقع."
-   data-en="Full control over operations, accounting, and communication — built for real-world operations."></p>
+<section>
+  <div class="container">
+    <h2 class="section-title">المشكلة في السوق</h2>
+    <p class="section-desc">
+      معظم شركات الليموزين تعتمد على واتساب ومكالمات بدون توثيق،
+      تشغيل يدوي، وخلافات مالية مستمرة تعيق النمو.
+    </p>
+  </div>
+</section>
 
-<a class="btn" href="#trial"
-   data-ar="ابدأ التجربة المجانية"
-   data-en="Start Free Trial"></a>
+<section>
+  <div class="container">
+    <h2 class="section-title">الحل</h2>
+    <p class="section-desc">
+      24Seven Limousine Core System يحول شركتك إلى منظومة تشغيل مقفولة:
+      كل رحلة، كل رسالة، وكل جنيه تحت السيطرة.
+    </p>
+  </div>
+</section>
 
-<!-- PROBLEM -->
-<div class="section">
-<h2 data-ar="المشكلة في السوق" data-en="The Problem"></h2>
-<p data-ar="تشغيل معتمد على واتساب ومكالمات بدون توثيق، خلافات مستمرة، فلوس بتضيع، وإدارة غير قابلة للتوسع."
-   data-en="Operations relying on WhatsApp and calls without documentation, constant disputes, financial leakage, and unscalable management."></p>
-</div>
+<section class="steps">
+  <div class="container">
+    <h2 class="section-title">كيف يعمل النظام</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>1. تسجيل الرحلة</h3>
+        <p>كل حجز يتم تسجيله تلقائيًا داخل النظام.</p>
+      </div>
+      <div class="card">
+        <h3>2. تشغيل ومتابعة</h3>
+        <p>إدارة السائقين، السيارات، والتواصل لحظة بلحظة.</p>
+      </div>
+      <div class="card">
+        <h3>3. حسابات وتحليل</h3>
+        <p>تحصيل، عمولات، تقارير أداء، وكل شيء موثق.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- SOLUTION -->
-<div class="section">
-<h2 data-ar="الحل" data-en="The Solution"></h2>
-<p data-ar="24Seven Limousine Core System يحوّل شركتك إلى منظومة تشغيل مقفولة: كل رحلة، كل رسالة، وكل جنيه تحت السيطرة."
-   data-en="24Seven Limousine Core System transforms your company into a closed operating loop: every trip, every message, every pound is under control."></p>
-</div>
+<section>
+  <div class="container">
+    <h2 class="section-title">المميزات الأساسية</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>إدارة الرحلات</h3>
+        <p>من الحجز حتى التحصيل والتقييم.</p>
+      </div>
+      <div class="card">
+        <h3>إدارة السائقين والأسطول</h3>
+        <p>متابعة أداء وحالة التشغيل.</p>
+      </div>
+      <div class="card">
+        <h3>محرك حسابات متكامل</h3>
+        <p>كل رقم له مسار واضح داخل النظام.</p>
+      </div>
+      <div class="card">
+        <h3>توثيق كامل للتواصل</h3>
+        <p>مفيش رسالة بتضيع.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- FEATURES -->
-<div class="section">
-<h2 data-ar="المميزات الأساسية" data-en="Core Features"></h2>
-<div class="grid">
-  <div class="card" data-ar="إدارة الرحلات" data-en="Trip Management"></div>
-  <div class="card" data-ar="إدارة السائقين والأسطول" data-en="Drivers & Fleet"></div>
-  <div class="card" data-ar="محرك حسابات متكامل" data-en="Accounting Engine"></div>
-  <div class="card" data-ar="توثيق كامل للتواصل" data-en="Communication Logging"></div>
-  <div class="card" data-ar="بوت تلجرام تشغيلي" data-en="Operational Telegram Bot"></div>
-  <div class="card" data-ar="تقارير وتحليل أداء" data-en="Reports & Analytics"></div>
-</div>
-</div>
+<section>
+  <div class="container">
+    <h2 class="section-title">لماذا 24Seven؟</h2>
+    <p class="section-desc">
+      مش سيستم مستورد ولا فكرة نظرية.
+      ده نظام اتبنى من تشغيل فعلي في السوق المصري
+      وقابل للتوسع لشركات Enterprise.
+    </p>
+  </div>
+</section>
 
-<!-- WHY -->
-<div class="section">
-<h2 data-ar="لماذا 24Seven؟" data-en="Why 24Seven?"></h2>
-<p data-ar="مش نظام أجنبي متعرب. ده سيستم اتبنى من قلب السوق المصري، لتشغيل حقيقي مش Demo."
-   data-en="Not a translated foreign system. Built from inside the Egyptian market for real operations, not demos."></p>
-</div>
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">ابدأ تجربة تشغيل حقيقية</h2>
+    <p class="section-desc">
+      جرّب النظام على شغلك الفعلي بدون التزام.
+    </p>
+    <a href="#" class="btn">اطلب التجربة الآن</a>
+  </div>
+</section>
 
-<!-- CTA -->
-<div class="section" id="trial">
-<h2 data-ar="ابدأ تجربة تشغيل حقيقية" data-en="Start a Real Trial"></h2>
-<p data-ar="جرّب النظام على شغلك الفعلي. بدون التزام."
-   data-en="Try the system on your real operations. No commitment."></p>
-<a class="btn" href="#" data-ar="اطلب التجربة الآن" data-en="Request Trial"></a>
-</div>
-
-<div class="footer">
-© 24Seven Limousine Core System
-</div>
-
-</div>
+<footer>
+  24Seven Limousine Core System ©
+</footer>
 
 </body>
 </html>
