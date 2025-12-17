@@ -1,248 +1,313 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <title>24Seven Limousine Core System</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24Seven | نظام التشغيل الأساسي لشركات الليموزين</title>
 
-  <style>
-    :root {
-      --bg-dark: #0b1220;
-      --bg-card: #111a2e;
-      --primary: #38bdf8;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-soft: rgba(255,255,255,0.06);
-    }
+    <meta name="description" content="24Seven هو نظام تشغيل تشغيلي مغلق لشركات الليموزين. تتبع، مساءلة، إثبات، وسيطرة كاملة على الرحلات والمال والتشغيل.">
+    <meta name="keywords" content="ليموزين, نظام تشغيل, إدارة رحلات, تتبع السائقين, SaaS مصر">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-    }
+    <style>
+        /* ================= RESET & ROOT ================= */
+        *{margin:0;padding:0;box-sizing:border-box}
 
-    body {
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      color: var(--text-main);
-      line-height: 1.8;
-    }
+        :root{
+            --bg-dark:#0a1128;
+            --bg-card:#111a3a;
+            --text-main:#ffffff;
+            --text-muted:#b0b8d4;
+            --accent-cyan:#00d9ff;
+            --accent-cyan-dark:#00a8cc;
+            --border-soft:rgba(255,255,255,.06);
+            --danger:#ff6b6b;
+            --transition:all .3s ease;
+        }
 
-    a { color: inherit; text-decoration: none; }
+        html{scroll-behavior:smooth}
+        body{
+            font-family:'Segoe UI',Tahoma,Geneva,sans-serif;
+            background:var(--bg-dark);
+            color:var(--text-main);
+            line-height:1.9;
+            overflow-x:hidden;
+        }
 
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-    }
+        /* ================= NAV ================= */
+        nav{
+            position:fixed;
+            top:0;width:100%;
+            background:rgba(10,17,40,.95);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid var(--border-soft);
+            z-index:1000;
+            padding:1rem 2rem;
+        }
+        .nav-container{
+            max-width:1400px;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .logo{
+            font-size:1.4rem;
+            font-weight:800;
+            color:var(--accent-cyan);
+            letter-spacing:2px;
+        }
+        .nav-links{
+            list-style:none;
+            display:flex;
+            gap:2rem;
+        }
+        .nav-links a{
+            color:var(--text-muted);
+            text-decoration:none;
+            font-size:.95rem;
+        }
+        .nav-links a:hover{color:var(--accent-cyan)}
+        @media(max-width:768px){.nav-links{display:none}}
 
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(2,6,23,0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-soft);
-      z-index: 100;
-    }
+        /* ================= HERO ================= */
+        .hero{
+            margin-top:70px;
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:120px 2rem;
+            background:linear-gradient(135deg,#0a1128,#111a3a);
+            position:relative;
+            text-align:center;
+        }
+        .hero::before{
+            content:'';
+            position:absolute;
+            top:-40%;
+            right:-10%;
+            width:600px;height:600px;
+            background:radial-gradient(circle,rgba(0,217,255,.12),transparent 70%);
+            border-radius:50%;
+        }
+        .hero-content{max-width:900px;position:relative;z-index:2}
+        .hero h1{
+            font-size:3.8rem;
+            font-weight:900;
+            line-height:1.25;
+            margin-bottom:1.5rem;
+        }
+        .hero h1 span{color:var(--accent-cyan)}
+        .hero p{
+            font-size:1.25rem;
+            color:var(--text-muted);
+            max-width:750px;
+            margin:auto;
+        }
+        .hero .threat-text{
+            margin-top:1.5rem;
+            font-size:1.1rem;
+            font-weight:700;
+            color:var(--danger);
+        }
+        .cta-button{
+            margin-top:2.5rem;
+            display:inline-block;
+            padding:16px 48px;
+            background:linear-gradient(135deg,var(--accent-cyan),var(--accent-cyan-dark));
+            color:var(--bg-dark);
+            font-weight:800;
+            border-radius:8px;
+            text-decoration:none;
+            transition:var(--transition);
+        }
+        .cta-button:hover{
+            transform:translateY(-3px);
+            box-shadow:0 20px 40px rgba(0,217,255,.3);
+        }
 
-    header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-    }
+        /* ================= GENERAL SECTIONS ================= */
+        section{
+            padding:100px 2rem;
+            max-width:1400px;
+            margin:auto;
+        }
+        .section-title{
+            font-size:2.5rem;
+            color:var(--accent-cyan);
+            margin-bottom:1.5rem;
+        }
+        .section-subtitle{
+            font-size:1.1rem;
+            color:var(--text-muted);
+            max-width:900px;
+            margin-bottom:3rem;
+        }
 
-    .logo {
-      font-weight: 700;
-      font-size: 18px;
-    }
+        /* ================= MARKET REALITY ================= */
+        .market-reality{background:linear-gradient(135deg,#111a3a,#0a1128)}
+        .pain-points{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:2rem;
+        }
+        .pain-point{
+            padding:2rem;
+            border:1px solid var(--border-soft);
+            background:rgba(0,217,255,.05);
+            border-radius:8px;
+        }
+        .pain-point h3{color:var(--accent-cyan);margin-bottom:1rem}
 
-    .lang {
-      color: var(--primary);
-      font-size: 14px;
-    }
+        /* ================= BLIND SPOT ================= */
+        .blind-spot{
+            background:linear-gradient(135deg,#111a3a,#0a1128);
+            border-top:2px solid var(--accent-cyan);
+            border-bottom:2px solid var(--accent-cyan);
+        }
+        .blind-list{list-style:none;margin-top:2rem}
+        .blind-list li{
+            background:rgba(255,107,107,.08);
+            border-right:4px solid var(--danger);
+            padding:1.5rem;
+            margin-bottom:1rem;
+            border-radius:4px;
+        }
+        .warning-text{
+            margin-top:2rem;
+            font-size:1.2rem;
+            font-weight:800;
+            color:var(--danger);
+            text-align:center;
+        }
 
-    section {
-      padding: 90px 0;
-    }
+        /* ================= FINAL CTA ================= */
+        .final-cta{text-align:center}
+        .form-container{
+            max-width:600px;
+            margin:3rem auto;
+            padding:2.5rem;
+            border:1px solid var(--border-soft);
+            border-radius:8px;
+            background:rgba(0,217,255,.05);
+        }
+        .form-group{margin-bottom:1.5rem;text-align:right}
+        .form-group label{color:var(--accent-cyan);font-weight:700}
+        .form-group input,.form-group textarea,.form-group select{
+            width:100%;
+            padding:12px;
+            background:rgba(255,255,255,.05);
+            border:1px solid var(--border-soft);
+            color:white;
+            border-radius:4px;
+        }
+        .submit-btn{
+            width:100%;
+            padding:14px;
+            font-weight:900;
+            background:linear-gradient(135deg,var(--accent-cyan),var(--accent-cyan-dark));
+            border:none;
+            border-radius:4px;
+            cursor:pointer;
+        }
 
-    .hero h1 {
-      font-size: 44px;
-      margin-bottom: 20px;
-    }
+        footer{
+            padding:3rem 2rem;
+            border-top:1px solid var(--border-soft);
+            text-align:center;
+            color:var(--text-muted);
+        }
 
-    .hero p {
-      color: var(--text-muted);
-      max-width: 620px;
-      margin-bottom: 30px;
-      font-size: 18px;
-    }
-
-    .btn {
-      background: var(--primary);
-      color: #020617;
-      padding: 14px 32px;
-      border-radius: 10px;
-      font-weight: 600;
-      display: inline-block;
-    }
-
-    .section-title {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .section-desc {
-      color: var(--text-muted);
-      max-width: 700px;
-      margin-bottom: 50px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .card {
-      background: linear-gradient(180deg, #0b1220, #060b16);
-      border: 1px solid var(--border-soft);
-      padding: 30px;
-      border-radius: 16px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .card p {
-      color: var(--text-muted);
-      font-size: 15px;
-    }
-
-    .steps .card {
-      position: relative;
-    }
-
-    footer {
-      border-top: 1px solid var(--border-soft);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-  </style>
+        @media(max-width:768px){
+            .hero h1{font-size:2.4rem}
+            .section-title{font-size:1.8rem}
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container">
-    <div class="logo">24Seven Limousine</div>
-    <div class="lang">AR | EN</div>
-  </div>
-</header>
+<nav>
+    <div class="nav-container">
+        <div class="logo">24Seven</div>
+        <ul class="nav-links">
+            <li><a href="#market">واقع السوق</a></li>
+            <li><a href="#blind">النقطة العمياء</a></li>
+            <li><a href="#cta">التقييم</a></li>
+        </ul>
+    </div>
+</nav>
 
 <section class="hero">
-  <div class="container">
-    <h1>نظام تشغيل ذكي لشركات الليموزين</h1>
-    <p>
-      تحكم كامل في التشغيل، الحسابات، والتواصل من منصة واحدة.
-      سيستم حقيقي مبني من قلب السوق – مش عرض تجريبي.
-    </p>
-    <a href="#contact" class="btn">ابدأ تجربة تشغيل حقيقية</a>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <h2 class="section-title">المشكلة في السوق</h2>
-    <p class="section-desc">
-      معظم شركات الليموزين تعتمد على واتساب ومكالمات بدون توثيق،
-      تشغيل يدوي، وخلافات مالية مستمرة تعيق النمو.
-    </p>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <h2 class="section-title">الحل</h2>
-    <p class="section-desc">
-      24Seven Limousine Core System يحول شركتك إلى منظومة تشغيل مقفولة:
-      كل رحلة، كل رسالة، وكل جنيه تحت السيطرة.
-    </p>
-  </div>
-</section>
-
-<section class="steps">
-  <div class="container">
-    <h2 class="section-title">كيف يعمل النظام</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>1. تسجيل الرحلة</h3>
-        <p>كل حجز يتم تسجيله تلقائيًا داخل النظام.</p>
-      </div>
-      <div class="card">
-        <h3>2. تشغيل ومتابعة</h3>
-        <p>إدارة السائقين، السيارات، والتواصل لحظة بلحظة.</p>
-      </div>
-      <div class="card">
-        <h3>3. حسابات وتحليل</h3>
-        <p>تحصيل، عمولات، تقارير أداء، وكل شيء موثق.</p>
-      </div>
+    <div class="hero-content">
+        <h1>هل تستطيع شركتك إثبات<br><span>كل رحلة تمت الشهر الماضي؟</span></h1>
+        <p>لو الإجابة محتاجة مكالمات أو بحث في شيتات، فإنت مش بتدير نظام… إنت بتطفي حرائق.</p>
+        <p class="threat-text">غياب الإثبات = غياب السيطرة = تسريب فلوس.</p>
+        <a href="#cta" class="cta-button">طلب تقييم تشغيلي</a>
     </div>
-  </div>
 </section>
 
-<section>
-  <div class="container">
-    <h2 class="section-title">المميزات الأساسية</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>إدارة الرحلات</h3>
-        <p>من الحجز حتى التحصيل والتقييم.</p>
-      </div>
-      <div class="card">
-        <h3>إدارة السائقين والأسطول</h3>
-        <p>متابعة أداء وحالة التشغيل.</p>
-      </div>
-      <div class="card">
-        <h3>محرك حسابات متكامل</h3>
-        <p>كل رقم له مسار واضح داخل النظام.</p>
-      </div>
-      <div class="card">
-        <h3>توثيق كامل للتواصل</h3>
-        <p>مفيش رسالة بتضيع.</p>
-      </div>
+<section id="market" class="market-reality">
+    <h2 class="section-title">ثمن التشغيل الأعمى</h2>
+    <p class="section-subtitle">
+        شركات الليموزين لا تخسر بسبب قلة الطلب… بل بسبب غياب السيطرة.
+    </p>
+    <div class="pain-points">
+        <div class="pain-point"><h3>نزاعات بدون دليل</h3><p>السائق يقول، العميل ينكر، والإدارة تخسر.</p></div>
+        <div class="pain-point"><h3>تحصيل غير موثق</h3><p>أموال دخلت بدون سجل واضح.</p></div>
+        <div class="pain-point"><h3>تشغيل مجزأ</h3><p>واتساب، شيت، ورق… ولا حقيقة واحدة.</p></div>
     </div>
-  </div>
 </section>
 
-<section>
-  <div class="container">
-    <h2 class="section-title">لماذا 24Seven؟</h2>
-    <p class="section-desc">
-      مش سيستم مستورد ولا فكرة نظرية.
-      ده نظام اتبنى من تشغيل فعلي في السوق المصري
-      وقابل للتوسع لشركات Enterprise.
-    </p>
-  </div>
+<section id="blind" class="blind-spot">
+    <h2 class="section-title">ما لا تراه اليوم</h2>
+    <ul class="blind-list">
+        <li>رحلة اتنفذت بدون تسجيل كامل</li>
+        <li>تحصيل اتغير رقمه في مكالمة</li>
+        <li>نزاع مالوش مرجع زمني</li>
+    </ul>
+    <p class="warning-text">لو مش شايفهم، هما شغالين ضدك.</p>
 </section>
 
-<section id="contact">
-  <div class="container">
-    <h2 class="section-title">ابدأ تجربة تشغيل حقيقية</h2>
-    <p class="section-desc">
-      جرّب النظام على شغلك الفعلي بدون التزام.
-    </p>
-    <a href="#" class="btn">اطلب التجربة الآن</a>
-  </div>
+<section id="cta" class="final-cta">
+    <h2 class="section-title">طلب تقييم تشغيلي</h2>
+    <p class="section-subtitle">مش كل شركة مؤهلة. خلينا نحدد ده بدقة.</p>
+
+    <div class="form-container">
+        <form id="contact-form">
+            <div class="form-group">
+                <label>اسم الشركة</label>
+                <input type="text" id="company-name" required>
+            </div>
+            <div class="form-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label>رقم الهاتف</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label>أكبر مشكلة تشغيلية</label>
+                <textarea id="main-issue"></textarea>
+            </div>
+            <button class="submit-btn">إرسال الطلب</button>
+        </form>
+    </div>
 </section>
 
 <footer>
-  24Seven Limousine Core System ©
+    <p>© 2025 24Seven Limousine Core System</p>
+    <p>نظام تشغيل تشغيلي مغلق لشركات الليموزين</p>
 </footer>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    alert('تم استلام طلبك. سيتم التواصل بعد التقييم.');
+    this.reset();
+});
+</script>
 
 </body>
 </html>
