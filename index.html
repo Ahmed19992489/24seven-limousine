@@ -1,352 +1,417 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24Seven | نظام التشغيل الأساسي لشركات الليموزين</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24Seven | نظام التشغيل الأساسي لشركات الليموزين</title>
 
-    <meta name="description" content="24Seven هو نظام تشغيل تشغيلي مغلق لشركات الليموزين. تتبع، مساءلة، إثبات، وسيطرة كاملة على الرحلات والمال والتشغيل.">
-    <meta name="keywords" content="ليموزين, نظام تشغيل, إدارة رحلات, تتبع السائقين, SaaS مصر">
+  <meta name="description" content="24Seven هو نظام تشغيل تشغيلي مغلق لشركات الليموزين. تتبع، مساءلة، إثبات، وسيطرة كاملة على الرحلات والمال والتشغيل.">
+  <meta name="keywords" content="ليموزين, نظام تشغيل, إدارة رحلات, تتبع السائقين, SaaS مصر">
 
-    <style>
-        /* ================= RESET & ROOT ================= */
-        *{margin:0;padding:0;box-sizing:border-box}
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
 
-        :root{
-            --bg-dark:#0a1128;
-            --bg-card:#111a3a;
-            --text-main:#ffffff;
-            --text-muted:#b0b8d4;
-            --accent-cyan:#00d9ff;
-            --accent-cyan-dark:#00a8cc;
-            --border-soft:rgba(255,255,255,.06);
-            --danger:#ff6b6b;
-            --transition:all .3s ease;
-        }
+    :root{
+      --bg-dark:#0a1128;
+      --bg-card:#111a3a;
+      --text-main:#ffffff;
+      --text-muted:#b0b8d4;
+      --accent-cyan:#00d9ff;
+      --accent-cyan-dark:#00a8cc;
+      --border-soft:rgba(255,255,255,.06);
+      --danger:#ff6b6b;
+      --transition:all .3s ease;
+    }
 
-        html{scroll-behavior:smooth}
-        body{
-            font-family:'Segoe UI',Tahoma,Geneva,sans-serif;
-            background:var(--bg-dark);
-            color:var(--text-main);
-            line-height:1.9;
-            overflow-x:hidden;
-        }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Segoe UI',Tahoma,Geneva,sans-serif;
+      background:var(--bg-dark);
+      color:var(--text-main);
+      line-height:1.9;
+      overflow-x:hidden;
+    }
 
-        /* ================= NAV ================= */
-        nav{
-            position:fixed;
-            top:0;width:100%;
-            background:rgba(10,17,40,.95);
-            backdrop-filter:blur(10px);
-            border-bottom:1px solid var(--border-soft);
-            z-index:1000;
-            padding:1rem 2rem;
-        }
-        .nav-container{
-            max-width:1400px;
-            margin:auto;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-        }
-        .logo{
-            font-size:1.4rem;
-            font-weight:800;
-            color:var(--accent-cyan);
-            letter-spacing:2px;
-        }
-        .nav-links{
-            list-style:none;
-            display:flex;
-            gap:2rem;
-        }
-        .nav-links a{
-            color:var(--text-muted);
-            text-decoration:none;
-            font-size:.95rem;
-        }
-        .nav-links a:hover{color:var(--accent-cyan)}
-        @media(max-width:768px){.nav-links{display:none}}
+    nav{
+      position:fixed;
+      top:0;width:100%;
+      background:rgba(10,17,40,.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border-soft);
+      z-index:1000;
+      padding:1rem 2rem;
+    }
+    .nav-container{
+      max-width:1400px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .logo{
+      font-size:1.4rem;
+      font-weight:800;
+      color:var(--accent-cyan);
+      letter-spacing:2px;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:2rem;
+    }
+    .nav-links a{
+      color:var(--text-muted);
+      text-decoration:none;
+      font-size:.95rem;
+    }
+    .nav-links a:hover{color:var(--accent-cyan)}
+    @media(max-width:768px){.nav-links{display:none}}
 
-        /* ================= HERO ================= */
-        .hero{
-            margin-top:70px;
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:120px 2rem;
-            background:linear-gradient(135deg,#0a1128,#111a3a);
-            position:relative;
-            text-align:center;
-        }
-        .hero::before{
-            content:'';
-            position:absolute;
-            top:-40%;
-            right:-10%;
-            width:600px;height:600px;
-            background:radial-gradient(circle,rgba(0,217,255,.12),transparent 70%);
-            border-radius:50%;
-        }
-        .hero-content{max-width:900px;position:relative;z-index:2}
-        .hero h1{
-            font-size:3.8rem;
-            font-weight:900;
-            line-height:1.25;
-            margin-bottom:1.5rem;
-        }
-        .hero h1 span{color:var(--accent-cyan)}
-        .hero p{
-            font-size:1.25rem;
-            color:var(--text-muted);
-            max-width:750px;
-            margin:auto;
-        }
-        .hero .threat-text{
-            margin-top:1.5rem;
-            font-size:1.1rem;
-            font-weight:700;
-            color:var(--danger);
-        }
-        .cta-button{
-            margin-top:2.5rem;
-            display:inline-block;
-            padding:16px 48px;
-            background:linear-gradient(135deg,var(--accent-cyan),var(--accent-cyan-dark));
-            color:var(--bg-dark);
-            font-weight:800;
-            border-radius:8px;
-            text-decoration:none;
-            transition:var(--transition);
-        }
-        .cta-button:hover{
-            transform:translateY(-3px);
-            box-shadow:0 20px 40px rgba(0,217,255,.3);
-        }
+    .hero{
+      margin-top:70px;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:120px 2rem;
+      background:linear-gradient(135deg,#0a1128,#111a3a);
+      position:relative;
+      text-align:center;
+    }
+    .hero::before{
+      content:'';
+      position:absolute;
+      top:-40%;
+      right:-10%;
+      width:600px;height:600px;
+      background:radial-gradient(circle,rgba(0,217,255,.12),transparent 70%);
+      border-radius:50%;
+    }
+    .hero-content{max-width:900px;position:relative;z-index:2}
+    .hero h1{
+      font-size:3.8rem;
+      font-weight:900;
+      line-height:1.25;
+      margin-bottom:1.5rem;
+    }
+    .hero h1 span{color:var(--accent-cyan)}
+    .hero p{
+      font-size:1.25rem;
+      color:var(--text-muted);
+      max-width:750px;
+      margin:auto;
+    }
+    .hero .threat-text{
+      margin-top:1.5rem;
+      font-size:1.1rem;
+      font-weight:700;
+      color:var(--danger);
+    }
+    .cta-button{
+      margin-top:2.5rem;
+      display:inline-block;
+      padding:16px 48px;
+      background:linear-gradient(135deg,var(--accent-cyan),var(--accent-cyan-dark));
+      color:var(--bg-dark);
+      font-weight:800;
+      border-radius:8px;
+      text-decoration:none;
+      transition:var(--transition);
+    }
+    .cta-button:hover{
+      transform:translateY(-3px);
+      box-shadow:0 20px 40px rgba(0,217,255,.3);
+    }
 
-        /* ================= GENERAL SECTIONS ================= */
-        section{
-            padding:100px 2rem;
-            max-width:1400px;
-            margin:auto;
-        }
-        .section-title{
-            font-size:2.5rem;
-            color:var(--accent-cyan);
-            margin-bottom:1.5rem;
-        }
-        .section-subtitle{
-            font-size:1.1rem;
-            color:var(--text-muted);
-            max-width:900px;
-            margin-bottom:3rem;
-        }
+    section{
+      padding:100px 2rem;
+      max-width:1400px;
+      margin:auto;
+    }
+    .section-title{
+      font-size:2.5rem;
+      color:var(--accent-cyan);
+      margin-bottom:1.5rem;
+    }
+    .section-subtitle{
+      font-size:1.1rem;
+      color:var(--text-muted);
+      max-width:900px;
+      margin-bottom:3rem;
+    }
 
-        /* ================= MARKET REALITY ================= */
-        .market-reality{background:linear-gradient(135deg,#111a3a,#0a1128)}
-        .pain-points{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-            gap:2rem;
-        }
-        .pain-point{
-            padding:2rem;
-            border:1px solid var(--border-soft);
-            background:rgba(0,217,255,.05);
-            border-radius:8px;
-        }
-        .pain-point h3{color:var(--accent-cyan);margin-bottom:1rem}
+    .market-reality{background:linear-gradient(135deg,#111a3a,#0a1128)}
+    .pain-points{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:2rem;
+    }
+    .pain-point{
+      padding:2rem;
+      border:1px solid var(--border-soft);
+      background:rgba(0,217,255,.05);
+      border-radius:8px;
+    }
+    .pain-point h3{color:var(--accent-cyan);margin-bottom:1rem}
 
-        /* ================= BLIND SPOT ================= */
-        .blind-spot{
-            background:linear-gradient(135deg,#111a3a,#0a1128);
-            border-top:2px solid var(--accent-cyan);
-            border-bottom:2px solid var(--accent-cyan);
-        }
-        .blind-list{list-style:none;margin-top:2rem}
-        .blind-list li{
-            background:rgba(255,107,107,.08);
-            border-right:4px solid var(--danger);
-            padding:1.5rem;
-            margin-bottom:1rem;
-            border-radius:4px;
-        }
-        .warning-text{
-            margin-top:2rem;
-            font-size:1.2rem;
-            font-weight:800;
-            color:var(--danger);
-            text-align:center;
-        }
+    .blind-spot{
+      background:linear-gradient(135deg,#111a3a,#0a1128);
+      border-top:2px solid var(--accent-cyan);
+      border-bottom:2px solid var(--accent-cyan);
+    }
+    .blind-list{list-style:none;margin-top:2rem}
+    .blind-list li{
+      background:rgba(255,107,107,.08);
+      border-right:4px solid var(--danger);
+      padding:1.5rem;
+      margin-bottom:1rem;
+      border-radius:4px;
+      color:var(--text-main);
+    }
+    .warning-text{
+      margin-top:2rem;
+      font-size:1.2rem;
+      font-weight:800;
+      color:var(--danger);
+      text-align:center;
+    }
 
-        /* ================= FINAL CTA ================= */
-        .final-cta{text-align:center}
-        .form-container{
-            max-width:600px;
-            margin:3rem auto;
-            padding:2.5rem;
-            border:1px solid var(--border-soft);
-            border-radius:8px;
-            background:rgba(0,217,255,.05);
-        }
-        .form-group{margin-bottom:1.5rem;text-align:right}
-        .form-group label{color:var(--accent-cyan);font-weight:700}
-        .form-group input,.form-group textarea,.form-group select{
-            width:100%;
-            padding:12px;
-            background:rgba(255,255,255,.05);
-            border:1px solid var(--border-soft);
-            color:white;
-            border-radius:4px;
-        }
-        .submit-btn{
-            width:100%;
-            padding:14px;
-            font-weight:900;
-            background:linear-gradient(135deg,var(--accent-cyan),var(--accent-cyan-dark));
-            border:none;
-            border-radius:4px;
-            cursor:pointer;
-        }
+    .final-cta{text-align:center}
+    .form-container{
+      max-width:650px;
+      margin:3rem auto;
+      padding:2.5rem;
+      border:1px solid var(--border-soft);
+      border-radius:8px;
+      background:rgba(0,217,255,.05);
+    }
+    .form-group{margin-bottom:1.2rem;text-align:right}
+    .form-group label{color:var(--accent-cyan);font-weight:700;display:block;margin-bottom:.4rem}
+    .form-group input,.form-group textarea,.form-group select{
+      width:100%;
+      padding:12px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border-soft);
+      color:white;
+      border-radius:4px;
+      outline:none;
+    }
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{
+      border-color:var(--accent-cyan);
+      background:rgba(0,217,255,.08);
+    }
+    .form-group textarea{min-height:120px;resize:vertical}
 
-        footer{
-            padding:3rem 2rem;
-            border-top:1px solid var(--border-soft);
-            text-align:center;
-            color:var(--text-muted);
-        }
+    .small-note{
+      font-size:.95rem;
+      color:var(--danger);
+      font-weight:700;
+      margin:1.2rem 0;
+      padding:1rem;
+      background:rgba(255,107,107,.08);
+      border-right:4px solid var(--danger);
+      border-radius:6px;
+      text-align:right;
+    }
 
-        @media(max-width:768px){
-            .hero h1{font-size:2.4rem}
-            .section-title{font-size:1.8rem}
-        }
-    </style>
+    .submit-btn{
+      width:100%;
+      padding:14px;
+      font-weight:900;
+      background:linear-gradient(135deg,var(--accent-cyan),var(--accent-cyan-dark));
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      color:var(--bg-dark);
+      transition:var(--transition);
+    }
+    .submit-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(0,217,255,.25);
+    }
+
+    footer{
+      padding:3rem 2rem;
+      border-top:1px solid var(--border-soft);
+      text-align:center;
+      color:var(--text-muted);
+    }
+
+    @media(max-width:768px){
+      .hero h1{font-size:2.4rem}
+      .section-title{font-size:1.8rem}
+    }
+  </style>
 </head>
 
 <body>
 
 <nav>
-    <div class="nav-container">
-        <div class="logo">24Seven</div>
-        <ul class="nav-links">
-            <li><a href="#market">واقع السوق</a></li>
-            <li><a href="#blind">النقطة العمياء</a></li>
-            <li><a href="#cta">التقييم</a></li>
-        </ul>
-    </div>
+  <div class="nav-container">
+    <div class="logo">24Seven</div>
+    <ul class="nav-links">
+      <li><a href="#market">واقع السوق</a></li>
+      <li><a href="#blind">النقطة العمياء</a></li>
+      <li><a href="#cta">التقييم</a></li>
+    </ul>
+  </div>
 </nav>
 
 <section class="hero">
-    <div class="hero-content">
-        <h1>هل تستطيع شركتك إثبات<br><span>كل رحلة تمت الشهر الماضي؟</span></h1>
-        <p>لو الإجابة محتاجة مكالمات أو بحث في شيتات، فإنت مش بتدير نظام… إنت بتطفي حرائق.</p>
-        <p class="threat-text">غياب الإثبات = غياب السيطرة = تسريب فلوس.</p>
-        <a href="#cta" class="cta-button">طلب تقييم تشغيلي</a>
-    </div>
+  <div class="hero-content">
+    <h1>هل تستطيع شركتك إثبات<br><span>كل رحلة تمت الشهر الماضي؟</span></h1>
+    <p>لو الإجابة محتاجة مكالمات أو بحث في شيتات، فإنت مش بتدير نظام… إنت بتطفي حرائق.</p>
+    <p class="threat-text">غياب الإثبات = غياب السيطرة = تسريب فلوس.</p>
+    <a href="#cta" class="cta-button">طلب تقييم تشغيلي</a>
+  </div>
 </section>
 
 <section id="market" class="market-reality">
-    <h2 class="section-title">ثمن التشغيل الأعمى</h2>
-    <p class="section-subtitle">
-        شركات الليموزين لا تخسر بسبب قلة الطلب… بل بسبب غياب السيطرة.
-    </p>
-    <div class="pain-points">
-        <div class="pain-point"><h3>نزاعات بدون دليل</h3><p>السائق يقول، العميل ينكر، والإدارة تخسر.</p></div>
-        <div class="pain-point"><h3>تحصيل غير موثق</h3><p>أموال دخلت بدون سجل واضح.</p></div>
-        <div class="pain-point"><h3>تشغيل مجزأ</h3><p>واتساب، شيت، ورق… ولا حقيقة واحدة.</p></div>
-    </div>
+  <h2 class="section-title">ثمن التشغيل الأعمى</h2>
+  <p class="section-subtitle">
+    شركات الليموزين لا تخسر بسبب قلة الطلب… بل بسبب غياب السيطرة.
+  </p>
+  <div class="pain-points">
+    <div class="pain-point"><h3>نزاعات بدون دليل</h3><p>السائق يقول، العميل ينكر، والإدارة تخسر.</p></div>
+    <div class="pain-point"><h3>تحصيل غير موثق</h3><p>أموال دخلت بدون سجل واضح.</p></div>
+    <div class="pain-point"><h3>تشغيل مجزأ</h3><p>واتساب، شيت، ورق… ولا حقيقة واحدة.</p></div>
+  </div>
 </section>
 
 <section id="blind" class="blind-spot">
-    <h2 class="section-title">ما لا تراه اليوم</h2>
-    <ul class="blind-list">
-        <li>رحلة اتنفذت بدون تسجيل كامل</li>
-        <li>تحصيل اتغير رقمه في مكالمة</li>
-        <li>نزاع مالوش مرجع زمني</li>
-    </ul>
-    <p class="warning-text">لو مش شايفهم، هما شغالين ضدك.</p>
+  <h2 class="section-title">ما لا تراه اليوم</h2>
+  <ul class="blind-list">
+    <li>رحلة اتنفذت بدون تسجيل كامل</li>
+    <li>تحصيل اتغير رقمه في مكالمة</li>
+    <li>نزاع مالوش مرجع زمني</li>
+  </ul>
+  <p class="warning-text">لو مش شايفهم، هما شغالين ضدك.</p>
 </section>
 
 <section id="cta" class="final-cta">
-    <h2 class="section-title">طلب تقييم تشغيلي</h2>
-        <p>مش كل شركة مؤهلة للنظام. املأ البيانات علشان نقيّم جاهزيتك التشغيلية.</p>
-        
-        <div class="form-container">
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="company-name">اسم الشركة</label>
-                    <input type="text" id="company-name" name="company-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">البريد الإلكتروني</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">رقم الهاتف</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="fleet-size">عدد السيارات</label>
-                    <input type="number" id="fleet-size" name="fleet-size" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="drivers-count">عدد السائقين</label>
-                    <input type="number" id="drivers-count" name="drivers-count" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="current-system">طريقة التشغيل الحالية</label>
-                    <select id="current-system" name="current-system" required>
-                        <option value="">اختر...</option>
-                        <option value="whatsapp">واتساب وتسجيل يدوي</option>
-                        <option value="sheets">جداول إكسل/شيت</option>
-                        <option value="mixed">مختلط (واتساب + شيت + ورقي)</option>
-                        <option value="other">نظام آخر</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="main-issue">أكبر مشكلة تواجهك حالياً (اختياري)</label>
-                    <textarea id="main-issue" name="main-issue" placeholder="مثال: نزاعات مع السائقين، خسائر مالية، عدم القدرة على تتبع الرحلات..."></textarea>
-                </div>
-                <p class="small-note">هذا ليس عرضاً تجريبياً. هذا دخول إلى نظام تشغيل مغلق يغيّر طريقة عمل شركتك.</p>
-                <button type="submit" class="submit-btn">طلب التقييم</button>
-            </form>
-        </div>
-    </section>
+  <h2 class="section-title">طلب تقييم تشغيلي</h2>
+  <p class="section-subtitle">مش كل شركة مؤهلة. املأ البيانات علشان نقيّم جاهزيتك التشغيلية.</p>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 24Seven Limousine Core System. جميع الحقوق محفوظة.</p>
-    <p>نظام تشغيل تشغيلي مغلق لشركات الليموزين</p>
+  <div class="form-container">
+    <form id="contact-form">
+      <div class="form-group">
+        <label for="company-name">اسم الشركة</label>
+        <input type="text" id="company-name" name="company_name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">رقم الهاتف</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fleet-size">عدد السيارات العاملة حاليًا</label>
+        <input type="number" id="fleet-size" name="fleet_size" min="1" required>
+      </div>
+
+      <div class="form-group">
+        <label for="drivers-count">عدد السائقين</label>
+        <input type="number" id="drivers-count" name="drivers_count" min="1" required>
+      </div>
+
+      <div class="form-group">
+        <label for="current-system">طريقة التشغيل الحالية</label>
+        <select id="current-system" name="current_system" required>
+          <option value="">اختر...</option>
+          <option value="whatsapp">واتساب وتسجيل يدوي</option>
+          <option value="sheets">جداول إكسل/شيت</option>
+          <option value="mixed">مختلط (واتساب + شيت + ورقي)</option>
+          <option value="other">نظام آخر</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="disputes">هل تواجه نزاعات متكررة مع السائقين أو العملاء؟</label>
+        <select id="disputes" name="disputes" required>
+          <option value="">اختر...</option>
+          <option value="yes">نعم – بشكل مستمر</option>
+          <option value="sometimes">أحيانًا</option>
+          <option value="no">نادرًا</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="commitment">هل تبحث عن نظام يفرض طريقة تشغيل موحدة حتى لو تطلب تغيير أسلوب العمل الحالي؟</label>
+        <select id="commitment" name="commitment" required>
+          <option value="">اختر...</option>
+          <option value="yes">نعم</option>
+          <option value="depends">حسب التفاصيل</option>
+          <option value="no">لا</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="main-issue">أكبر مشكلة تواجهك حالياً (اختياري)</label>
+        <textarea id="main-issue" name="main_issue" placeholder="مثال: نزاعات مع السائقين، خسائر مالية، عدم القدرة على تتبع الرحلات..."></textarea>
+      </div>
+
+      <p class="small-note">هذا ليس عرضاً تجريبياً. هذا دخول إلى نظام تشغيل مغلق يغيّر طريقة عمل شركتك.</p>
+
+      <button type="submit" class="submit-btn" id="submitBtn">طلب التقييم</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 24Seven Limousine Core System</p>
+  <p>نظام تشغيل تشغيلي مغلق لشركات الليموزين</p>
 </footer>
 
+<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <script>
-(function(){
-   emailjs.init("KkVNrxD2AirmD-BxM");
-})();
+  (function(){
+    emailjs.init("KkVNrxD2AirmD-BxM");
+  })();
 </script>
 
 <script>
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+  const form = document.getElementById('contact-form');
+  const btn  = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e){
     e.preventDefault();
 
-    emailjs.send("24seven", "template_ho8ma0t", {
-        company_name: document.getElementById("company-name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        main_issue: document.getElementById("main-issue").value
-    }).then(function() {
-        alert("تم استلام طلبك وسيتم التواصل بعد التقييم");
-        document.getElementById("contact-form").reset();
-    }, function(error) {
-        alert("حصل خطأ أثناء الإرسال");
+    btn.disabled = true;
+    btn.textContent = "جاري الإرسال...";
+
+    const payload = {
+      company_name: document.getElementById("company-name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      fleet_size: document.getElementById("fleet-size").value,
+      drivers_count: document.getElementById("drivers-count").value,
+      current_system: document.getElementById("current-system").value,
+      disputes: document.getElementById("disputes").value,
+      commitment: document.getElementById("commitment").value,
+      main_issue: document.getElementById("main-issue").value.trim()
+    };
+
+    emailjs.send("24seven", "template_ho8ma0t", payload)
+      .then(function(){
+        alert("تم استلام طلبك بنجاح. سيتم التواصل بعد مراجعة التقييم.");
+        form.reset();
+      })
+      .catch(function(error){
+        alert("حصل خطأ أثناء الإرسال. راجع الإعدادات أو القالب في EmailJS.");
         console.log(error);
-    });
-});
+      })
+      .finally(function(){
+        btn.disabled = false;
+        btn.textContent = "طلب التقييم";
+      });
+  });
 </script>
 
 </body>
