@@ -271,33 +271,55 @@
 
 <section id="cta" class="final-cta">
     <h2 class="section-title">طلب تقييم تشغيلي</h2>
-    <p class="section-subtitle">مش كل شركة مؤهلة. خلينا نحدد ده بدقة.</p>
+        <h2>طلب تقييم تشغيلي</h2>
+        <p>مش كل شركة مؤهلة للنظام. املأ البيانات علشان نقيّم جاهزيتك التشغيلية.</p>
+        
+        <div class="form-container">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="company-name">اسم الشركة</label>
+                    <input type="text" id="company-name" name="company-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="fleet-size">عدد السيارات</label>
+                    <input type="number" id="fleet-size" name="fleet-size" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="drivers-count">عدد السائقين</label>
+                    <input type="number" id="drivers-count" name="drivers-count" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="current-system">طريقة التشغيل الحالية</label>
+                    <select id="current-system" name="current-system" required>
+                        <option value="">اختر...</option>
+                        <option value="whatsapp">واتساب وتسجيل يدوي</option>
+                        <option value="sheets">جداول إكسل/شيت</option>
+                        <option value="mixed">مختلط (واتساب + شيت + ورقي)</option>
+                        <option value="other">نظام آخر</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="main-issue">أكبر مشكلة تواجهك حالياً (اختياري)</label>
+                    <textarea id="main-issue" name="main-issue" placeholder="مثال: نزاعات مع السائقين، خسائر مالية، عدم القدرة على تتبع الرحلات..."></textarea>
+                </div>
+                <p class="small-note">هذا ليس عرضاً تجريبياً. هذا دخول إلى نظام تشغيل مغلق يغيّر طريقة عمل شركتك.</p>
+                <button type="submit" class="submit-btn">طلب التقييم</button>
+            </form>
+        </div>
+    </section>
 
-    <div class="form-container">
-        <form id="contact-form">
-            <div class="form-group">
-                <label>اسم الشركة</label>
-                <input type="text" id="company-name" required>
-            </div>
-            <div class="form-group">
-                <label>البريد الإلكتروني</label>
-                <input type="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label>رقم الهاتف</label>
-                <input type="tel" id="phone" required>
-            </div>
-            <div class="form-group">
-                <label>أكبر مشكلة تشغيلية</label>
-                <textarea id="main-issue"></textarea>
-            </div>
-            <button class="submit-btn">إرسال الطلب</button>
-        </form>
-    </div>
-</section>
-
-<footer>
-    <p>© 2025 24Seven Limousine Core System</p>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 24Seven Limousine Core System. جميع الحقوق محفوظة.</p>
     <p>نظام تشغيل تشغيلي مغلق لشركات الليموزين</p>
 </footer>
 
