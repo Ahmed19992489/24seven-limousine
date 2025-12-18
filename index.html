@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>24Seven | نظام التشغيل التشغيلي لشركات الليموزين</title>
 
+<meta name="description" content="24Seven هو نظام تشغيل تشغيلي مغلق لشركات الليموزين. إثبات، سيطرة، وتحكم كامل في الرحلات والمال.">
+<meta name="keywords" content="ليموزين, إدارة رحلات, نظام تشغيل, SaaS مصر">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
@@ -16,80 +19,48 @@
 --accent:#00d9ff;
 --accent-dark:#00a8cc;
 --danger:#ff6b6b;
---border:rgba(255,255,255,.06);
+--border:rgba(255,255,255,.08);
 }
 
 body{
 font-family:'Segoe UI',Tahoma;
-background:var(--bg-dark);
+background:linear-gradient(135deg,#0a1128,#111a3a);
 color:var(--text-main);
 line-height:1.9;
 }
 
-nav{
-position:fixed;
-top:0;
-width:100%;
-background:rgba(10,17,40,.95);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--border);
-padding:1rem 2rem;
-z-index:1000;
-}
-
-.nav{
-max-width:1400px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-color:var(--accent);
-font-weight:900;
-letter-spacing:2px;
-font-size:1.4rem;
-}
-
 section{
-max-width:1400px;
+padding:100px 20px;
+max-width:1300px;
 margin:auto;
-padding:120px 2rem;
 }
+
+h1,h2,h3{line-height:1.3}
 
 .hero{
 min-height:100vh;
 display:flex;
 align-items:center;
-justify-content:center;
 text-align:center;
-background:linear-gradient(135deg,#0a1128,#111a3a);
 }
 
 .hero h1{
-font-size:3.6rem;
+font-size:3.5rem;
 font-weight:900;
-margin-bottom:1.5rem;
 }
 
 .hero span{color:var(--accent)}
 
 .hero p{
-font-size:1.3rem;
+margin-top:20px;
+font-size:1.2rem;
 color:var(--text-muted);
 max-width:800px;
-margin:auto;
-}
-
-.threat{
-color:var(--danger);
-margin-top:1.5rem;
-font-weight:700;
+margin-inline:auto;
 }
 
 .cta{
-margin-top:3rem;
+margin-top:40px;
 display:inline-block;
 padding:16px 50px;
 background:linear-gradient(135deg,var(--accent),var(--accent-dark));
@@ -97,203 +68,175 @@ color:#001;
 font-weight:900;
 border-radius:8px;
 text-decoration:none;
+transition:.3s;
 }
 
-.market{
-background:linear-gradient(135deg,#111a3a,#0a1128);
+.cta:hover{
+transform:translateY(-4px);
+box-shadow:0 20px 40px rgba(0,217,255,.3);
 }
 
-.title{
-font-size:2.4rem;
-color:var(--accent);
-margin-bottom:1.5rem;
-}
-
-.subtitle{
-color:var(--text-muted);
-max-width:900px;
-margin-bottom:3rem;
+.problem{
+background:rgba(255,255,255,.02);
+border-top:1px solid var(--border);
+border-bottom:1px solid var(--border);
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:2rem;
+gap:30px;
+margin-top:50px;
 }
 
 .card{
-padding:2rem;
+background:rgba(255,255,255,.04);
 border:1px solid var(--border);
-background:rgba(0,217,255,.05);
+padding:30px;
 border-radius:8px;
 }
 
-.card h3{color:var(--accent);margin-bottom:1rem}
-
-.blind{
-border-top:2px solid var(--accent);
-border-bottom:2px solid var(--accent);
-background:linear-gradient(135deg,#111a3a,#0a1128);
-}
-
-.blind li{
-background:rgba(255,107,107,.08);
-border-right:4px solid var(--danger);
-padding:1.5rem;
-margin-bottom:1rem;
-border-radius:4px;
-list-style:none;
+.card h3{
+color:var(--accent);
+margin-bottom:15px;
 }
 
 .warning{
-color:var(--danger);
-font-weight:800;
+margin-top:40px;
 text-align:center;
-margin-top:2rem;
-}
-
-.shift{
-background:linear-gradient(135deg,#0a1128,#111a3a);
-}
-
-.highlight{
-background:rgba(0,217,255,.08);
-border-right:4px solid var(--accent);
-padding:2rem;
-margin:2rem 0;
-color:var(--accent);
-font-weight:700;
-}
-
-.who{
-background:linear-gradient(135deg,#111a3a,#0a1128);
-}
-
-.who-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:3rem;
-}
-
-.who-card{
-border:1px solid var(--border);
-background:rgba(0,217,255,.05);
-padding:2.5rem;
-border-radius:8px;
-}
-
-.who-card ul{list-style:none}
-
-.who-card li{
-color:var(--text-muted);
-margin-bottom:1rem;
-padding-right:1.5rem;
-position:relative;
-}
-
-.who-card li::before{
-content:'✓';
-position:absolute;
-right:0;
-color:var(--accent);
-}
-
-.not-for li::before{
-content:'✗';
+font-size:1.2rem;
+font-weight:800;
 color:var(--danger);
+}
+
+.steps{
+background:linear-gradient(135deg,#111a3a,#0a1128);
+border-top:2px solid var(--accent);
+border-bottom:2px solid var(--accent);
+}
+
+.step{
+margin-bottom:25px;
+font-size:1.1rem;
 }
 
 .final{
 text-align:center;
-background:linear-gradient(135deg,#0a1128,#111a3a);
+background:rgba(0,217,255,.05);
 }
 
 footer{
-border-top:1px solid var(--border);
-padding:3rem;
+padding:40px 20px;
 text-align:center;
+border-top:1px solid var(--border);
 color:var(--text-muted);
+font-size:.9rem;
 }
 
 @media(max-width:768px){
 .hero h1{font-size:2.4rem}
-.who-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-<div class="nav">
-<div class="logo">24Seven</div>
-</div>
-</nav>
-
+<!-- HERO -->
 <section class="hero">
 <div>
-<h1>هل تستطيع شركتك إثبات<br><span>كل رحلة تمت الشهر الماضي؟</span></h1>
-<p>لو الإجابة محتاجة مكالمات أو بحث في شيتات، فإنت مش بتدير نظام… إنت بتطفي حرائق.</p>
-<p class="threat">غياب الإثبات = غياب السيطرة = تسريب فلوس.</p>
-<a href="assessment.html" class="cta">ابدأ التقييم التشغيلي</a>
+<h1>
+هل تدير شركتك<br>
+<span>ولا تطفئ حرائق؟</span>
+</h1>
+
+<p>
+24Seven هو نظام تشغيل تشغيلي مغلق لشركات الليموزين  
+يوحّد الرحلات، السائقين، والتحصيل  
+ويحوّل كل رحلة إلى **دليل مُثبت** مش حكاية.
+</p>
+
+<a href="#about" class="cta">تعرّف على النظام</a>
 </div>
 </section>
 
-<section class="market">
-<h2 class="title">ثمن التشغيل الأعمى</h2>
-<p class="subtitle">شركات الليموزين لا تخسر بسبب قلة الطلب… بل بسبب غياب السيطرة.</p>
+<!-- PROBLEM -->
+<section id="about" class="problem">
+<h2>المشكلة الحقيقية في السوق</h2>
 
 <div class="grid">
-<div class="card"><h3>نزاعات بلا دليل</h3><p>السائق يقول، العميل ينكر، والإدارة تخسر.</p></div>
-<div class="card"><h3>تحصيل غير موثق</h3><p>أموال دخلت بدون سجل واضح.</p></div>
-<div class="card"><h3>تشغيل مجزأ</h3><p>واتساب، شيت، ورق… ولا حقيقة واحدة.</p></div>
-</div>
-</section>
-
-<section class="blind">
-<h2 class="title">ما لا تراه اليوم</h2>
-<ul>
-<li>رحلة اتنفذت بدون تسجيل كامل</li>
-<li>تحصيل اتغير رقمه في مكالمة</li>
-<li>نزاع مالوش مرجع زمني</li>
-<li>مكالمة غير مسجلة</li>
-</ul>
-<p class="warning">لو مش شايفهم، هما شغالين ضدك.</p>
-</section>
-
-<section class="shift">
-<h2 class="title">الحل ليس تطبيقًا آخر</h2>
-<p class="subtitle">أي أداة جديدة فوق فوضى قديمة… بتزود الفوضى.</p>
-<div class="highlight">السيطرة الحقيقية تبدأ بتغيير طريقة التشغيل، مش إضافة برنامج.</div>
-<p class="subtitle">24Seven هو نظام تشغيل مغلق الحلقة، يمنع أي عملية خارج المسار القابل للإثبات.</p>
-</section>
-
-<section class="who">
-<h2 class="title">المعيار غير القابل للتفاوض</h2>
-<div class="who-grid">
-<div class="who-card not-for">
-<h3>هذا النظام ليس لمن:</h3>
-<ul>
-<li>مرتاح للغموض المالي</li>
-<li>يعتمد على واتساب الشخصي</li>
-<li>يتجنب المساءلة</li>
-</ul>
+<div class="card">
+<h3>نزاعات بلا دليل</h3>
+<p>السائق يقول، العميل ينكر، والإدارة تخسر.</p>
 </div>
 
-<div class="who-card">
-<h3>هذا النظام لمن:</h3>
-<ul>
-<li>يطلب إثبات كامل</li>
-<li>يريد السيطرة على التشغيل</li>
-<li>يخطط للتوسع بوعي</li>
-</ul>
+<div class="card">
+<h3>تحصيل قابل للتغيير</h3>
+<p>رقم الرحلة بيتغير في مكالمة أو واتساب.</p>
+</div>
+
+<div class="card">
+<h3>تشغيل مجزأ</h3>
+<p>شيت، واتساب، ورق… ولا حقيقة واحدة.</p>
+</div>
+</div>
+
+<p class="warning">
+غياب الإثبات = غياب السيطرة = تسريب فلوس
+</p>
+</section>
+
+<!-- SOLUTION -->
+<section>
+<h2>ما هو 24Seven؟</h2>
+
+<div class="grid">
+<div class="card">
+<h3>نظام تشغيل</h3>
+<p>مش برنامج… عقل تشغيلي يربط كل شيء.</p>
+</div>
+
+<div class="card">
+<h3>إثبات زمني</h3>
+<p>كل خطوة موثقة – لا إنكار – لا جدال.</p>
+</div>
+
+<div class="card">
+<h3>سيطرة كاملة</h3>
+<p>المالك يرى الحقيقة لحظة بلحظة.</p>
 </div>
 </div>
 </section>
 
-<section class="final">
-<h2 class="title">الخطوة التالية</h2>
-<p class="subtitle">مش كل شركة مؤهلة. التقييم التشغيلي هو بوابة الدخول الوحيدة.</p>
+<!-- WHO -->
+<section class="problem">
+<h2>لمن هذا النظام؟</h2>
+
+<div class="grid">
+<div class="card">
+<h3>✔ شركات ليموزين</h3>
+<p>تشغيل يومي – نزاعات – تحصيل</p>
+</div>
+
+<div class="card">
+<h3>✔ أساطيل سيارات</h3>
+<p>سائقين – ورديات – التزام</p>
+</div>
+
+<div class="card">
+<h3>✖ ليس للجميع</h3>
+<p>غير مناسب للتشغيل العشوائي</p>
+</div>
+</div>
+</section>
+
+<!-- STEPS -->
+<section class="steps">
+<h2>كيف تبدأ مع 24Seven؟</h2>
+
+<div class="step">① تقييم تشغيلي مبدئي</div>
+<div class="step">② مراجعة داخلية للبيانات</div>
+<div class="step">③ تجربة 15 يوم (للمؤهلين فقط)</div>
+
 <a href="assessment.html" class="cta">ابدأ التقييم التشغيلي</a>
 </section>
 
