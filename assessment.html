@@ -3,85 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حجز نسخة | نظام 24Seven الذكي</title>
+    <title>تفعيل النظام | 24Seven AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root { --bg-dark: #0a1128; --bg-card: #111a3a; --accent: #00d9ff; --success: #27ae60; --text: #ffffff; }
-        body { font-family: 'Segoe UI', Tahoma; background: var(--bg-dark); color: var(--text); padding: 20px; text-align: right; }
-        .container { max-width: 650px; margin: 40px auto; background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--accent); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
-        h2 { margin-bottom: 10px; color: var(--accent); font-size: 1.8rem; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--accent); }
-        input, select, textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #1a264d; color: white; outline: none; font-size: 1rem; font-family: inherit; }
-        input:focus, select:focus, textarea:focus { border-color: var(--accent); }
-        .info-box { background: rgba(0,217,255,0.04); padding: 20px; border-right: 5px solid var(--accent); border-radius: 8px; margin-bottom: 30px; font-size: 0.95rem; }
-        .submit-btn { width: 100%; padding: 18px; background: var(--success); color: white; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; font-size: 1.2rem; transition: 0.3s; margin-top: 10px; }
-        .submit-btn:hover { background: #219150; transform: translateY(-3px); }
-        .submit-btn:disabled { background: #444; opacity: 0.7; }
+        :root {
+            --bg-deep: #030712;
+            --glass-bg: rgba(17, 24, 39, 0.8);
+            --accent-blue: #00d9ff;
+            --accent-purple: #7000ff;
+            --success-neon: #27ae60;
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        
+        body { 
+            background-color: var(--bg-deep); 
+            color: white; 
+            min-height: 100vh;
+            background: radial-gradient(circle at 50% 100%, #1e1b4b 0%, #030712 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h2 { font-size: 2.2rem; font-weight: 900; color: var(--accent-blue); margin-bottom: 10px; }
+        .header p { color: #9ca3af; font-size: 1.1rem; }
+
+        .steps-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding: 15px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+        }
+        .step-item { font-size: 0.85rem; color: #6b7280; display: flex; align-items: center; gap: 8px; }
+        .step-item.active { color: var(--accent-blue); font-weight: bold; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group.full-width { grid-column: span 2; }
+
+        label { display: block; margin-bottom: 10px; font-weight: 700; color: #d1d5db; font-size: 0.95rem; }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-blue);
+            background: rgba(0, 217, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+        }
+
+        textarea { height: 100px; resize: none; }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #000;
+            border: none;
+            border-radius: 15px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .container { padding: 30px 20px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>تفعيل نظام 24Seven لشركتك</h2>
-    <div class="info-box">
-        يرجى ملء كافة البيانات التالية بدقة ليتم إصدار نسخة النظام الخاصة بشركتك وإرسال بيانات الدفع فودافون كاش لك فوراً.
+    <div class="header">
+        <h2>تفعيل الذكاء الاصطناعي لشركتك</h2>
+        <p>املأ البيانات بدقة لإصدار نسخة التمليك الخاصة بك بالخصم الحالي (999 ج.م)</p>
+    </div>
+
+    <div class="steps-nav">
+        <div class="step-item active"><i class="fas fa-edit"></i> البيانات الأساسية</div>
+        <div class="step-item"><i class="fas fa-wallet"></i> بيانات الدفع</div>
+        <div class="step-item"><i class="fas fa-rocket"></i> بدء التشغيل</div>
     </div>
 
     <form id="order-form">
-        <div class="form-group">
-            <label>اسم الشركة / صاحب العمل</label>
-            <input type="text" name="company_name" required placeholder="الاسم الكامل">
-        </div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>اسم الشركة / صاحب العمل</label>
+                <input type="text" name="company_name" required placeholder="أدخل الاسم">
+            </div>
 
-        <div class="form-group">
-            <label>البريد الإلكتروني</label>
-            <input type="email" name="email" required placeholder="example@mail.com">
-        </div>
+            <div class="form-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" name="email" required placeholder="name@company.com">
+            </div>
 
-        <div class="form-group">
-            <label>رقم الهاتف (واتساب)</label>
-            <input type="tel" name="phone" required placeholder="01xxxxxxxxx">
-        </div>
+            <div class="form-group">
+                <label>رقم الهاتف (واتساب)</label>
+                <input type="tel" name="phone" required placeholder="01xxxxxxxxx">
+            </div>
 
-        <div class="form-group">
-            <label>طريقة التشغيل الحالية</label>
-            <select name="current_system" required>
-                <option value="واتساب وتسجيل يدوي">واتساب وتسجيل يدوي</option>
-                <option value="جداول إكسل/شيت">جداول إكسل/شيت</option>
-                <option value="مختلط">مختلط (ورق + شيت)</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label>نظام الإدارة الحالي</label>
+                <select name="current_system" required>
+                    <option value="واتساب وتسجيل يدوي">واتساب وتسجيل يدوي</option>
+                    <option value="جداول إكسل/شيت">جداول إكسل/شيت</option>
+                    <option value="نظام مختلط">نظام مختلط</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label>هل تواجه نزاعات متكررة مع السائقين؟</label>
-            <select name="disputes" required>
-                <option value="نعم - بشكل مستمر">نعم - بشكل مستمر</option>
-                <option value="أحياناً">أحياناً</option>
-                <option value="نادراً">نادراً</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label>هل توجد نزاعات حسابية مع السائقين؟</label>
+                <select name="disputes" required>
+                    <option value="نعم - بشكل مستمر">نعم - بشكل مستمر</option>
+                    <option value="أحياناً">أحياناً</option>
+                    <option value="نادراً">نادراً</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label>مدى الاستعداد لتغيير أسلوب العمل للنظام الجديد؟</label>
-            <select name="commitment" required>
-                <option value="مستعد تماماً">مستعد تماماً</option>
-                <option value="حسب التفاصيل">حسب التفاصيل</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label>مدى الجاهزية للتحول الرقمي الكامل</label>
+                <select name="commitment" required>
+                    <option value="مستعد تماماً">مستعد تماماً</option>
+                    <option value="حسب التفاصيل">حسب التفاصيل</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label>أكبر مشكلة تواجهك حالياً (اختياري)</label>
-            <textarea name="main_issue" placeholder="مثال: تسريب مالي، ضياع بيانات الصيانة..."></textarea>
+            <div class="form-group full-width">
+                <label>أكبر مشكلة تشغيلية تواجهك (اختياري)</label>
+                <textarea name="main_issue" placeholder="اشرح لنا التحدي الأكبر لبرمجة الحل بداخل نسختك..."></textarea>
+            </div>
         </div>
         
-        <button type="submit" class="submit-btn" id="submitBtn">تأكيد الطلب وحجز النسخة</button>
+        <button type="submit" class="submit-btn" id="submitBtn">
+            تأكيد الطلب وتفعيل الخصم 50%
+            <i class="fas fa-shield-check"></i>
+        </button>
     </form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
     (function(){
-        // استخدام المفتاح الخاص بك الموجود في الكود الأصلي
+        // استخدام المفتاح الخاص بك المسجل مسبقاً
         emailjs.init("KkVNrxD2AirmD-BxM"); 
     })();
 
@@ -91,20 +197,20 @@
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         btn.disabled = true;
-        btn.textContent = "جاري إرسال طلبك...";
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري معالجة طلبك الرقمي...';
 
-        // إرسال البيانات باستخدام معرف الخدمة والقالب الخاص بك
+        // إرسال البيانات لقالب EmailJS الخاص بك
         emailjs.sendForm('24seven', 'template_ho8ma0t', this)
             .then(function() {
-                alert('تم استلام طلبك بنجاح! تم ارسال الشرح كاملا على ايميلك و هنبعتلك فيديو على الواتساب بالشرح تفصيلا .');
+                alert('تم استلام طلبك بنجاح! فريق الدعم سيتواصل معك عبر واتساب فوراً ببيانات التحويل وتفعيل العرض.');
                 form.reset();
             }, function(error) {
-                alert('عذراً، حدث خطأ تقني. يرجى المحاولة مرة أخرى.');
+                alert('عذراً، حدث خطأ في الشبكة. يرجى المحاولة مرة أخرى.');
                 console.log(error);
             })
             .finally(() => {
                 btn.disabled = false;
-                btn.textContent = "تأكيد الطلب وحجز النسخة";
+                btn.innerHTML = 'تأكيد الطلب وتفعيل الخصم 50% <i class="fas fa-shield-check"></i>';
             });
     });
 </script>
