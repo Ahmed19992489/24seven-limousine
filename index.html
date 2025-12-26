@@ -3,276 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24Seven AI | مستقبل إدارة أساطيل الليموزين</title>
-    <meta name="description" content="أتمتة كاملة لشركات الليموزين باستخدام تقنيات AI و Google Cloud.">
+    <title>24Seven AI | المنظومة الرقمية المتكاملة</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        :root {
-            --bg-deep: #030712;
-            --glass-bg: rgba(17, 24, 39, 0.7);
-            --accent-blue: #00d9ff;
-            --accent-purple: #7000ff;
-            --danger-neon: #ff2e2e;
-            --text-glow: 0 0 10px rgba(0, 217, 255, 0.5);
-            --border-glass: rgba(255, 255, 255, 0.1);
-        }
-
+        /* الجزء الخاص بالتصميم الاحترافي v10.0 */
+        :root { --p-glow: #00f2ff; --s-glow: #7000ff; --bg: #030712; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        
-        body { 
-            background-color: var(--bg-deep); 
-            color: white; 
-            line-height: 1.6; 
-            overflow-x: hidden;
-            background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #030712 100%);
-        }
-
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 1.2rem 5%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glass);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo { 
-            font-size: 1.8rem; 
-            font-weight: 900; 
-            color: var(--accent-blue); 
-            text-shadow: var(--text-glow);
-            letter-spacing: -1px;
-        }
-
-        .hero {
-            padding: 180px 5% 100px;
-            text-align: center;
-            position: relative;
-        }
-
-        .timer-container {
-            margin-bottom: 30px;
-            display: inline-flex;
-            gap: 15px;
-            background: rgba(255, 46, 46, 0.1);
-            padding: 10px 25px;
-            border-radius: 15px;
-            border: 1px dashed var(--danger-neon);
-        }
-        .timer-unit { text-align: center; }
-        .timer-unit span { display: block; font-size: 1.5rem; font-weight: 900; color: var(--danger-neon); }
-        .timer-label { font-size: 0.7rem; color: #9ca3af; }
-
-        .hero-badge {
-            background: var(--danger-neon);
-            color: white;
-            padding: 8px 25px;
-            border-radius: 50px;
-            font-weight: 900;
-            display: inline-block;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255, 46, 46, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            background: linear-gradient(to bottom, #fff 30%, var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            color: #9ca3af;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-
-        .price-hero {
-            margin-bottom: 40px;
-        }
-        .old-price-hero {
-            font-size: 1.8rem;
-            color: #6b7280;
-            text-decoration: line-through;
-            margin-left: 15px;
-        }
-        .new-price-hero {
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: var(--accent-blue);
-            text-shadow: var(--text-glow);
-        }
-
-        .btn-ai {
-            padding: 20px 50px;
-            border-radius: 15px;
-            font-weight: 900;
-            text-decoration: none;
-            font-size: 1.3rem;
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--accent-blue);
-            color: #000;
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.4);
-        }
-
-        .btn-ai:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 0 50px rgba(0, 217, 255, 0.6);
-        }
-
-        .features { padding: 100px 5%; }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .feature-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--border-glass);
-            padding: 45px;
-            border-radius: 30px;
-            transition: 0.4s;
-        }
-        .feature-card:hover { border-color: var(--accent-blue); transform: translateY(-10px); }
-        .feature-card i { font-size: 3.5rem; color: var(--accent-blue); margin-bottom: 25px; }
-
-        .pricing-section {
-            padding: 100px 5%;
-            text-align: center;
-        }
-        .pricing-card {
-            max-width: 650px;
-            margin: auto;
-            background: linear-gradient(145deg, var(--accent-purple), var(--accent-blue));
-            padding: 3px;
-            border-radius: 30px;
-        }
-        .pricing-inner {
-            background: var(--bg-deep);
-            padding: 60px;
-            border-radius: 27px;
-        }
-
-        footer { padding: 60px 5%; text-align: center; border-top: 1px solid var(--border-glass); color: #4b5563; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .new-price-hero { font-size: 3rem; }
-            .btn-ai { width: 100%; justify-content: center; }
-        }
+        body { background: var(--bg); color: white; overflow-x: hidden; background: radial-gradient(circle at 20% 20%, #1e1b4b 0%, #030712 100%); }
+        nav { padding: 1.5rem 8%; background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: fixed; width: 100%; z-index: 1000; display: flex; justify-content: space-between; }
+        .hero { padding: 180px 8% 50px; text-align: center; }
+        .ai-card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 8%; }
+        .ai-card { background: rgba(15, 23, 42, 0.7); padding: 30px; border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s; }
+        .ai-card:hover { border-color: var(--p-glow); transform: translateY(-10px); }
+        .btn-glow { padding: 20px 60px; border-radius: 15px; font-weight: 900; background: var(--p-glow); color: #000; text-decoration: none; box-shadow: 0 0 30px rgba(0, 242, 255, 0.4); display: inline-block; }
+        .price-tag { font-size: 4rem; font-weight: 900; margin: 20px 0; }
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="logo">24SEVEN AI</div>
-        <a href="assessment.html" class="btn-ai" style="padding: 10px 25px; font-size: 1rem; box-shadow: none;">اغتنم الخصم</a>
-    </nav>
+    <nav><div style="font-size: 2rem; font-weight: 900; color: var(--p-glow);">24Seven AI</div></nav>
 
     <header class="hero">
-        <div class="hero-badge">خصم 50% لفترة محدودة جداً</div>
+        <h1 style="font-size: 4rem; margin-bottom: 20px;">الذكاء الإداري لأسطول <span>الليموزين</span></h1>
+        <p style="font-size: 1.4rem; color: #94a3b8; max-width: 800px; margin: auto;">تم دمج كافة العمليات الحسابية والترحيل الفوري في منظومة واحدة محمية سحابياً.</p>
         
-        <br>
-        <div class="timer-container" id="countdown">
-            <div class="timer-unit"><span id="hours">05</span><div class="timer-label">ساعة</div></div>
-            <div class="timer-unit"><span id="minutes">42</span><div class="timer-label">دقيقة</div></div>
-            <div class="timer-unit"><span id="seconds">18</span><div class="timer-label">ثانية</div></div>
-        </div>
-
-        <h1>إدارة أسطولك بذكاء <br><span style="color: var(--accent-blue);">وقوة الـ AI الرقمية</span></h1>
-        
-        <div class="price-hero">
-            <span class="old-price-hero">2,350 ج.م</span>
-            <span class="new-price-hero">999 <span>ج.م</span></span>
-        </div>
-
-        <p>النظام الوحيد الذي يربط "جوجل فورم" بحساباتك وصيانة سياراتك آلياً وبدقة 100%. تمليك كامل للكود للأبد.</p>
-        
-        <a href="assessment.html" class="btn-ai">
-            احجز نسختك بالخصم الحالي
-            <i class="fas fa-bolt"></i>
-        </a>
+        <div class="price-tag">999 <span style="font-size: 1.5rem;">ج.م</span></div>
+        <a href="#" class="btn-glow" onclick="runSetup()">تفعيل المنظومة الآن</a>
     </header>
 
-    <section class="features">
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-robot"></i>
-                <h3>الترحيل الذكي الفوري</h3>
-                <p>تحديث فوري لبيانات السائقين والسيارات واليوميات في أقل من ثانية وبدون أي تدخل بشري.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-chart-pie"></i>
-                <h3>المحاسبة الرقمية الدقيقة</h3>
-                <p>حساب الصافي (V) وتكلفة الصيانة (U) واليوميات التراكمية (M, N, O) بمعادلات برمجية متطورة.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-fingerprint"></i>
-                <h3>خصوصية تامة (تمليك)</h3>
-                <p>بياناتك ليست على سيرفراتنا؛ هي بداخل Google Drive الخاص بك فقط. خصوصيتك هي أولويتنا.</p>
-            </div>
+    <section class="ai-card-container">
+        <div class="ai-card" style="border-left: 5px solid var(--p-glow);">
+            <i class="fas fa-brain" style="font-size: 2.5rem; color: var(--p-glow);"></i>
+            <h3>معالجة البيانات الفورية</h3>
+            <p>حساب الصيانة $U$ وصافي الربح $V$ آلياً فور إدخال البيانات.</p>
+        </div>
+        <div class="ai-card" style="border-left: 5px solid var(--s-glow);">
+            <i class="fab fa-telegram" style="font-size: 2.5rem; color: var(--s-glow);"></i>
+            <h3>الربط الذكي بالبوت</h3>
+            <p>تحكم كامل في إحصائياتك وتقاريرك عبر واجهة تلجرام احترافية.</p>
         </div>
     </section>
-
-    <section class="pricing-section">
-        <div class="pricing-card">
-            <div class="pricing-inner">
-                <h2 style="margin-bottom: 20px;">احصل على "العقل الرقمي" لشركتك</h2>
-                <div style="font-size: 3.5rem; font-weight: 900; color: var(--accent-blue);">999 <span style="font-size: 1.2rem; color: #9ca3af;">ج.م / نسخة التمليك</span></div>
-                <p style="text-decoration: line-through; color: #6b7280; font-size: 1.5rem; margin-top: -10px;">السعر الأصلي: 2,350 ج.م</p>
-                <ul style="list-style: none; margin: 30px 0; text-align: right; color: #d1d5db;">
-                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> تمليك الكود بالكامل مدى الحياة</li>
-                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> ربط تلقائي مع بوت تلجرام احترافي</li>
-                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> نظام تنبيهات الصيانة الذكي</li>
-                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> استخراج مسير الرواتب بصيغة DOC</li>
-                </ul>
-                <a href="assessment.html" class="btn-ai" style="width: 100%; justify-content: center;">
-                    تفعيل العرض الآن
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 24SEVEN AI Limousine Systems - Powering the future of transport</p>
-    </footer>
 
     <script>
-        function startTimer(duration) {
-            var timer = duration, hours, minutes, seconds;
-            setInterval(function () {
-                hours = parseInt(timer / 3600, 10);
-                minutes = parseInt((timer % 3600) / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-                document.getElementById('hours').textContent = hours < 10 ? "0" + hours : hours;
-                document.getElementById('minutes').textContent = minutes < 10 ? "0" + minutes : minutes;
-                document.getElementById('seconds').textContent = seconds < 10 ? "0" + seconds : seconds;
-                if (--timer < 0) { timer = duration; }
-            }, 1000);
+        // دالة التفعيل التي تستدعي محركك المركزي (CoreEngine)
+        function runSetup() {
+            console.log("جاري استدعاء المحرك المركزي...");
+            // هنا يتم استدعاء الدوال الـ 18 بنداً التي برمجناها
+            google.script.run.withSuccessHandler(function() {
+                alert("تم تفعيل المنظومة وربطها بالبوت بنجاح!");
+            }).setupBotKeyboard(); 
         }
-        window.onload = function () { startTimer(20538); };
+
+        /* ملاحظة للأستاذ أحمد: 
+           كود الـ 400 سطر الخاص بالترحيل (moveRowOnTrigger) 
+           وحسابات السائقين (generateDriverPayroll) 
+           موجود الآن داخل ملف .gs (المكتبة المركزية) لضمان حماية كودك وعدم سرقته.
+        */
     </script>
 </body>
 </html>
