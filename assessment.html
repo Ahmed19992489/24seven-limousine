@@ -1,94 +1,93 @@
-import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
-import { ArrowLeft, CheckCircle2, Zap, Shield, TrendingUp, FileText, BellRing } from "lucide-react";
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حجز نسخة النظام | 24Seven Bot</title>
+    <style>
+        :root { --bg-dark: #0a1128; --bg-card: #111a3a; --accent: #00d9ff; --success: #27ae60; --text: #ffffff; }
+        body { font-family: 'Segoe UI', Tahoma; background: var(--bg-dark); color: var(--text); padding: 20px; text-align: right; }
+        .container { max-width: 650px; margin: 40px auto; background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--accent); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        h2 { margin-bottom: 10px; color: var(--accent); font-size: 2rem; }
+        p.subtitle { color: var(--text-muted); margin-bottom: 30px; opacity: 0.8; }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-weight: 700; color: var(--accent); }
+        input, select { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #1a264d; color: white; outline: none; font-size: 1rem; }
+        input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(0,217,255,0.2); }
+        .steps-card { background: rgba(0,217,255,0.04); padding: 20px; border-right: 5px solid var(--accent); border-radius: 8px; margin-bottom: 30px; }
+        .steps-card li { margin-bottom: 8px; font-size: 0.95rem; list-style: none; }
+        .submit-btn { width: 100%; padding: 20px; background: var(--success); color: white; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; font-size: 1.2rem; transition: 0.3s; margin-top: 10px; }
+        .submit-btn:hover { background: #219150; transform: translateY(-3px); }
+        .submit-btn:disabled { background: #444; opacity: 0.7; }
+    </style>
+</head>
+<body>
 
-export default function Home() {
-  const [, navigate] = useLocation();
-
-  const features = [
-    {
-      icon: Zap,
-      title: "أتمتة كاملة (Zero Effort)",
-      description: "من جوجل فورم ⬅️ لصفحة السائق ⬅️ لصفحة السيارة. كل شيء يتحرك آلياً بدون تدخل بشري.",
-    },
-    {
-      icon: FileText,
-      title: "مسير رواتب DOC بضغطة زر",
-      description: "استخرج كشوف الحساب الرسمية شاملة اليوميات والسلف والخصومات بدقة متناهية.",
-    },
-    {
-      icon: BellRing,
-      title: "تنبيهات صيانة ذكية",
-      description: "نظام يراقب العداد ويرسل لك تنبيهات زيت وفتيس قبل الموعد بـ 200 كم.",
-    },
-    {
-      icon: Shield,
-      title: "تمليك وخصوصية 100%",
-      description: "بياناتك على حساب جوجل الخاص بك. لا اشتراك شهري ولا أحد يطلع على أسرارك.",
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-[#0a1128] text-white overflow-x-hidden" dir="rtl">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-[#0a1128]/80 backdrop-blur-md border-b border-white/10 py-4 px-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="text-2xl font-black text-[#00d9ff] tracking-tighter">24Seven Bot</div>
-          <Button onClick={() => navigate("/assessment")} className="bg-[#00d9ff] text-[#0a1128] font-bold hover:bg-[#00a8cc]">
-            ابدأ الآن بـ 999 ج
-          </Button>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <header className="py-24 px-6 text-center bg-gradient-to-b from-[#111a3a] to-[#0a1128]">
-        <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
-          سيطر على شركتك بـ <br/>
-          <span className="text-[#00d9ff]">نظام ذكي تملكه للأبد</span>
-        </h1>
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
-          حوّل جوجل شيت إلى موظف حسابات ومدير أسطول يعمل 24 ساعة. لا ضياع للرحلات ولا نزاعات مع السائقين بعد اليوم.
-        </p>
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-           <Button onClick={() => navigate("/assessment")} size="lg" className="px-12 py-8 text-xl font-black bg-[#00d9ff] text-[#0a1128]">
-             احجز نسختك الآن
-           </Button>
-           <div className="bg-[#ff6b6b] px-6 py-2 rounded-full font-bold animate-pulse text-white">
-             عرض محدود: 999 ج بدلاً من 3000 ج
-           </div>
-        </div>
-      </header>
-
-      {/* Features Grid */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-16 text-[#00d9ff]">لماذا يعتمد أصحاب الشركات علينا؟</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((f, i) => (
-            <div key={i} className="bg-[#111a3a] p-8 rounded-2xl border border-white/5 hover:border-[#00d9ff]/50 transition-all group">
-              <f.icon className="w-12 h-12 text-[#00d9ff] mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold mb-4">{f.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{f.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Trust Section */}
-      <section className="bg-white/5 py-20 px-6 text-center border-y border-white/10">
-        <h2 className="text-2xl font-bold mb-6">بياناتك هي رأس مالك</h2>
-        <p className="text-gray-400 max-w-3xl mx-auto mb-10">
-          النظام يعمل كلياً على **Google Apps Script**. هذا يعني أن الكود والبيانات بالكامل على جهازك وفي Google Drive الخاص بك. لا توجد قاعدة بيانات وسيطة، والخصوصية مضمونة 100%.
-        </p>
-      </section>
-
-      {/* Final CTA */}
-      <footer className="py-20 px-6 text-center">
-        <h2 className="text-4xl font-black mb-8 italic">مستعد لرفع كفاءة تشغيلك؟</h2>
-        <Button onClick={() => navigate("/assessment")} size="lg" className="bg-[#27ae60] hover:bg-[#219150] px-12 py-8 text-xl font-bold">
-          طلب النظام والدفع فودافون كاش
-        </Button>
-        <p className="mt-6 text-gray-500">© 2025 24Seven Limousine Core System</p>
-      </footer>
+<div class="container">
+    <h2>تفعيل نظام 24Seven لشركتك</h2>
+    <p class="subtitle">يرجى تسجيل البيانات بدقة لإعداد ملفات الكود الخاصة بك.</p>
+    
+    <div class="steps-card">
+        <ul>
+            <li>✅ تسجيل بيانات الشركة والأسطول</li>
+            <li>✅ استلام تفاصيل التحويل (فودافون كاش)</li>
+            <li>✅ إرسال ملف الكود + فيديو شرح الربط خلال ساعة</li>
+        </ul>
     </div>
-  );
-}
+
+    <form id="order-form">
+        <div class="form-group">
+            <label>اسم صاحب الشركة / المدير المسئول</label>
+            <input type="text" name="from_name" id="name" required placeholder="الاسم الكامل">
+        </div>
+        <div class="form-group">
+            <label>رقم الواتساب (لإرسال الكود والدعم الفني)</label>
+            <input type="tel" name="phone" id="phone" required placeholder="01xxxxxxxxx">
+        </div>
+        <div class="form-group">
+            <label>عدد سيارات الشركة حالياً</label>
+            <input type="number" name="fleet_size" id="fleet" required placeholder="مثال: 10">
+        </div>
+        <div class="form-group">
+            <label>الباقة الأساسية</label>
+            <select name="package" id="package">
+                <option value="Full Package - 999 EGP">باقة التمليك الكاملة (999 جنيهاً مصرياً)</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="submitBtn">تأكيد الطلب وحجز نسخة الكود</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    (function(){
+        // تم الحفاظ على الـ Public Key الخاص بك لضمان استلام الإيميلات
+        emailjs.init("KkVNrxD2AirmD-BxM"); 
+    })();
+
+    const form = document.getElementById('order-form');
+    const btn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.textContent = "جاري معالجة طلبك...";
+
+        // إرسال البيانات لقالب EmailJS (تأكد من مطابقة الـ Template ID)
+        emailjs.sendForm('24seven', 'template_ho8ma0t', this)
+            .then(function() {
+                alert('تم استلام طلبك بنجاح! سيتم إرسال أرقام التحويل عبر الواتساب فوراً.');
+                form.reset();
+            }, function(error) {
+                alert('عذراً، حدث خطأ تقني. يرجى المحاولة مرة أخرى.');
+                console.log(error);
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.textContent = "تأكيد الطلب وحجز نسخة الكود";
+            });
+    });
+</script>
+</body>
+</html>
