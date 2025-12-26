@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حجز نسخة النظام | 24Seven Bot</title>
+    <title>حجز نسخة | نظام 24Seven الذكي</title>
     <style>
         :root { --bg-dark: #0a1128; --bg-card: #111a3a; --accent: #00d9ff; --success: #27ae60; --text: #ffffff; }
         body { font-family: 'Segoe UI', Tahoma; background: var(--bg-dark); color: var(--text); padding: 20px; text-align: right; }
         .container { max-width: 650px; margin: 40px auto; background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--accent); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
-        h2 { margin-bottom: 10px; color: var(--accent); font-size: 2rem; }
-        p.subtitle { color: var(--text-muted); margin-bottom: 30px; opacity: 0.8; }
-        .form-group { margin-bottom: 25px; }
-        label { display: block; margin-bottom: 10px; font-weight: 700; color: var(--accent); }
-        input, select { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #1a264d; color: white; outline: none; font-size: 1rem; }
-        input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(0,217,255,0.2); }
-        .steps-card { background: rgba(0,217,255,0.04); padding: 20px; border-right: 5px solid var(--accent); border-radius: 8px; margin-bottom: 30px; }
-        .steps-card li { margin-bottom: 8px; font-size: 0.95rem; list-style: none; }
-        .submit-btn { width: 100%; padding: 20px; background: var(--success); color: white; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; font-size: 1.2rem; transition: 0.3s; margin-top: 10px; }
+        h2 { margin-bottom: 10px; color: var(--accent); font-size: 1.8rem; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--accent); }
+        input, select, textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #1a264d; color: white; outline: none; font-size: 1rem; font-family: inherit; }
+        input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+        .info-box { background: rgba(0,217,255,0.04); padding: 20px; border-right: 5px solid var(--accent); border-radius: 8px; margin-bottom: 30px; font-size: 0.95rem; }
+        .submit-btn { width: 100%; padding: 18px; background: var(--success); color: white; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; font-size: 1.2rem; transition: 0.3s; margin-top: 10px; }
         .submit-btn:hover { background: #219150; transform: translateY(-3px); }
         .submit-btn:disabled { background: #444; opacity: 0.7; }
     </style>
@@ -25,44 +23,65 @@
 
 <div class="container">
     <h2>تفعيل نظام 24Seven لشركتك</h2>
-    <p class="subtitle">يرجى تسجيل البيانات بدقة لإعداد ملفات الكود الخاصة بك.</p>
-    
-    <div class="steps-card">
-        <ul>
-            <li>✅ تسجيل بيانات الشركة والأسطول</li>
-            <li>✅ استلام تفاصيل التحويل (فودافون كاش)</li>
-            <li>✅ إرسال ملف الكود + فيديو شرح الربط خلال ساعة</li>
-        </ul>
+    <div class="info-box">
+        يرجى ملء كافة البيانات التالية بدقة ليتم إصدار نسخة النظام الخاصة بشركتك وإرسال بيانات الدفع فودافون كاش لك فوراً.
     </div>
 
     <form id="order-form">
         <div class="form-group">
-            <label>اسم صاحب الشركة / المدير المسئول</label>
-            <input type="text" name="from_name" id="name" required placeholder="الاسم الكامل">
+            <label>اسم الشركة / صاحب العمل</label>
+            <input type="text" name="company_name" required placeholder="الاسم الكامل">
         </div>
+
         <div class="form-group">
-            <label>رقم الواتساب (لإرسال الكود والدعم الفني)</label>
-            <input type="tel" name="phone" id="phone" required placeholder="01xxxxxxxxx">
+            <label>البريد الإلكتروني</label>
+            <input type="email" name="email" required placeholder="example@mail.com">
         </div>
+
         <div class="form-group">
-            <label>عدد سيارات الشركة حالياً</label>
-            <input type="number" name="fleet_size" id="fleet" required placeholder="مثال: 10">
+            <label>رقم الهاتف (واتساب)</label>
+            <input type="tel" name="phone" required placeholder="01xxxxxxxxx">
         </div>
+
         <div class="form-group">
-            <label>الباقة الأساسية</label>
-            <select name="package" id="package">
-                <option value="Full Package - 999 EGP">باقة التمليك الكاملة (999 جنيهاً مصرياً)</option>
+            <label>طريقة التشغيل الحالية</label>
+            <select name="current_system" required>
+                <option value="واتساب وتسجيل يدوي">واتساب وتسجيل يدوي</option>
+                <option value="جداول إكسل/شيت">جداول إكسل/شيت</option>
+                <option value="مختلط">مختلط (ورق + شيت)</option>
             </select>
         </div>
+
+        <div class="form-group">
+            <label>هل تواجه نزاعات متكررة مع السائقين؟</label>
+            <select name="disputes" required>
+                <option value="نعم - بشكل مستمر">نعم - بشكل مستمر</option>
+                <option value="أحياناً">أحياناً</option>
+                <option value="نادراً">نادراً</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>مدى الاستعداد لتغيير أسلوب العمل للنظام الجديد؟</label>
+            <select name="commitment" required>
+                <option value="مستعد تماماً">مستعد تماماً</option>
+                <option value="حسب التفاصيل">حسب التفاصيل</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>أكبر مشكلة تواجهك حالياً (اختياري)</label>
+            <textarea name="main_issue" placeholder="مثال: تسريب مالي، ضياع بيانات الصيانة..."></textarea>
+        </div>
         
-        <button type="submit" class="submit-btn" id="submitBtn">تأكيد الطلب وحجز نسخة الكود</button>
+        <button type="submit" class="submit-btn" id="submitBtn">تأكيد الطلب وحجز النسخة</button>
     </form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
     (function(){
-        // تم الحفاظ على الـ Public Key الخاص بك لضمان استلام الإيميلات
+        // استخدام المفتاح الخاص بك الموجود في الكود الأصلي
         emailjs.init("KkVNrxD2AirmD-BxM"); 
     })();
 
@@ -72,9 +91,9 @@
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         btn.disabled = true;
-        btn.textContent = "جاري معالجة طلبك...";
+        btn.textContent = "جاري إرسال طلبك...";
 
-        // إرسال البيانات لقالب EmailJS (تأكد من مطابقة الـ Template ID)
+        // إرسال البيانات باستخدام معرف الخدمة والقالب الخاص بك
         emailjs.sendForm('24seven', 'template_ho8ma0t', this)
             .then(function() {
                 alert('تم استلام طلبك بنجاح! سيتم إرسال أرقام التحويل عبر الواتساب فوراً.');
@@ -85,7 +104,7 @@
             })
             .finally(() => {
                 btn.disabled = false;
-                btn.textContent = "تأكيد الطلب وحجز نسخة الكود";
+                btn.textContent = "تأكيد الطلب وحجز النسخة";
             });
     });
 </script>
