@@ -3,155 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24Seven AI | مستقبل إدارة الليموزين</title>
+    <title>24Seven AI | مستقبل إدارة أساطيل الليموزين</title>
+    <meta name="description" content="أتمتة كاملة لشركات الليموزين باستخدام تقنيات AI و Google Cloud.">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary: #00f2ff;
-            --accent: #7000ff;
-            --bg: #020617;
-            --glass: rgba(15, 23, 42, 0.7);
-            --neon-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            --bg-deep: #030712;
+            --glass-bg: rgba(17, 24, 39, 0.7);
+            --accent-blue: #00d9ff;
+            --accent-purple: #7000ff;
+            --danger-neon: #ff2e2e;
+            --text-glow: 0 0 10px rgba(0, 217, 255, 0.5);
+            --border-glass: rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background: var(--bg); color: #fff; line-height: 1.6; overflow-x: hidden; }
-
-        /* تأثير الخلفية الديناميكي */
-        .glow-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #020617 100%);
-        }
-
-        /* Nav - الثقة والاحترافية */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 1.5rem 8%;
-            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(20px);
-            z-index: 1000; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .logo { font-size: 2rem; font-weight: 900; color: var(--primary); text-shadow: var(--neon-shadow); }
-
-        /* Hero Section - جذب الانتباه الفوري */
-        .hero { padding: 220px 8% 100px; text-align: center; }
-        .badge-ai {
-            background: linear-gradient(90deg, #ff2e2e, #ff6b6b); color: #fff;
-            padding: 10px 25px; border-radius: 50px; font-weight: 900;
-            display: inline-block; margin-bottom: 30px; animation: pulse 2s infinite;
-        }
-
-        .hero h1 { font-size: 4.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 30px; }
-        .hero h1 span { background: linear-gradient(90deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* العرض المالي - منطقة التحويل */
-        .offer-card {
-            background: var(--glass); max-width: 900px; margin: 40px auto;
-            border-radius: 40px; padding: 60px; border: 1px solid rgba(0, 242, 255, 0.1);
-            backdrop-filter: blur(30px); position: relative;
-        }
-        .price-tag { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 30px 0; }
-        .old-p { font-size: 2.2rem; color: #475569; text-decoration: line-through; }
-        .new-p { font-size: 6rem; font-weight: 900; color: #fff; text-shadow: var(--neon-shadow); }
-
-        /* CTA - الزر الذهبي */
-        .cta-btn {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: #000; padding: 25px 70px; border-radius: 20px; font-weight: 900;
-            font-size: 1.6rem; text-decoration: none; display: inline-flex; align-items: center; gap: 15px;
-            transition: 0.4s; box-shadow: 0 15px 40px rgba(0, 242, 255, 0.3);
-        }
-        .cta-btn:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 20px 60px var(--primary); color: #fff; }
-
-        /* المميزات - الصور البصرية (UX) */
-        .features-showcase { padding: 100px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .feature-item {
-            background: rgba(255,255,255,0.02); padding: 50px; border-radius: 35px;
-            border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; position: relative; overflow: hidden;
-        }
-        .feature-item:hover { background: rgba(0, 242, 255, 0.05); border-color: var(--primary); }
-        .feature-item i { font-size: 4rem; color: var(--primary); margin-bottom: 30px; display: block; }
         
-        /* محاكاة واجهة البوت الذكي */
-        .bot-interface {
-            background: #17212b; border-radius: 30px; padding: 25px; margin-top: 50px;
-            border: 4px solid #242f3d; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        body { 
+            background-color: var(--bg-deep); 
+            color: white; 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #030712 100%);
         }
-        .bot-header { border-bottom: 1px solid #242f3d; padding-bottom: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .status-dot { width: 12px; height: 12px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00; }
 
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.2rem 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { 
+            font-size: 1.8rem; 
+            font-weight: 900; 
+            color: var(--accent-blue); 
+            text-shadow: var(--text-glow);
+            letter-spacing: -1px;
+        }
+
+        .hero {
+            padding: 180px 5% 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .timer-container {
+            margin-bottom: 30px;
+            display: inline-flex;
+            gap: 15px;
+            background: rgba(255, 46, 46, 0.1);
+            padding: 10px 25px;
+            border-radius: 15px;
+            border: 1px dashed var(--danger-neon);
+        }
+        .timer-unit { text-align: center; }
+        .timer-unit span { display: block; font-size: 1.5rem; font-weight: 900; color: var(--danger-neon); }
+        .timer-label { font-size: 0.7rem; color: #9ca3af; }
+
+        .hero-badge {
+            background: var(--danger-neon);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 900;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255, 46, 46, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            background: linear-gradient(to bottom, #fff 30%, var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #9ca3af;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .price-hero {
+            margin-bottom: 40px;
+        }
+        .old-price-hero {
+            font-size: 1.8rem;
+            color: #6b7280;
+            text-decoration: line-through;
+            margin-left: 15px;
+        }
+        .new-price-hero {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+            text-shadow: var(--text-glow);
+        }
+
+        .btn-ai {
+            padding: 20px 50px;
+            border-radius: 15px;
+            font-weight: 900;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent-blue);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.4);
+        }
+
+        .btn-ai:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.6);
+        }
+
+        .features { padding: 100px 5%; }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            padding: 45px;
+            border-radius: 30px;
+            transition: 0.4s;
+        }
+        .feature-card:hover { border-color: var(--accent-blue); transform: translateY(-10px); }
+        .feature-card i { font-size: 3.5rem; color: var(--accent-blue); margin-bottom: 25px; }
+
+        .pricing-section {
+            padding: 100px 5%;
+            text-align: center;
+        }
+        .pricing-card {
+            max-width: 650px;
+            margin: auto;
+            background: linear-gradient(145deg, var(--accent-purple), var(--accent-blue));
+            padding: 3px;
+            border-radius: 30px;
+        }
+        .pricing-inner {
+            background: var(--bg-deep);
+            padding: 60px;
+            border-radius: 27px;
+        }
+
+        footer { padding: 60px 5%; text-align: center; border-top: 1px solid var(--border-glass); color: #4b5563; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            .new-p { font-size: 4rem; }
-            .cta-btn { width: 100%; justify-content: center; font-size: 1.2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .new-price-hero { font-size: 3rem; }
+            .btn-ai { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <div class="glow-bg"></div>
+
     <nav>
-        <div class="logo">24Seven AI</div>
-        <div style="font-weight: 700; color: var(--primary);"><i class="fas fa-microchip"></i> الذكاء الإداري v10.0</div>
+        <div class="logo">24SEVEN AI</div>
+        <a href="assessment.html" class="btn-ai" style="padding: 10px 25px; font-size: 1rem; box-shadow: none;">اغتنم الخصم</a>
     </nav>
 
     <header class="hero">
-        <div class="badge-ai">عرض التمليك الكامل متاح لـ 3 شركات فقط</div>
-        <h1>لا تدير عملك..<br>امتلك <span>عقلاً سحابياً</span> يديره عنك</h1>
-        <p style="font-size: 1.6rem; color: #94a3b8; max-width: 900px; margin: 0 auto 50px;">
-            انتقل من الفوضى اليدوية إلى الدقة الرقمية. منظومة 24Seven AI هي الشريك الرقمي الذي يحسب، يحلل، وينبهك بكل تفاصيل أسطولك لحظة بلحظة.
-        </p>
-
-        <div class="offer-card">
-            <h2>استثمارك لمرة واحدة.. والنتائج للأبد</h2>
-            <div class="price-tag">
-                <span class="old-p">2,350 ج.م</span>
-                <span class="new-p">999 <span style="font-size: 1.8rem;">ج.م</span></span>
-            </div>
-            <p style="color: var(--primary); font-weight: 900; margin-bottom: 30px;">✓ تمليك كامل ✓ لا اشتراكات شهرية ✓ خصوصية 100%</p>
-            
-            <a href="assessment.html" class="cta-btn">تفعيل المنظومة الآن <i class="fas fa-bolt"></i></a>
+        <div class="hero-badge">خصم 50% لفترة محدودة جداً</div>
+        
+        <br>
+        <div class="timer-container" id="countdown">
+            <div class="timer-unit"><span id="hours">05</span><div class="timer-label">ساعة</div></div>
+            <div class="timer-unit"><span id="minutes">42</span><div class="timer-label">دقيقة</div></div>
+            <div class="timer-unit"><span id="seconds">18</span><div class="timer-label">ثانية</div></div>
         </div>
+
+        <h1>إدارة أسطولك بذكاء <br><span style="color: var(--accent-blue);">وقوة الـ AI الرقمية</span></h1>
+        
+        <div class="price-hero">
+            <span class="old-price-hero">2,350 ج.م</span>
+            <span class="new-price-hero">999 <span>ج.م</span></span>
+        </div>
+
+        <p>النظام الوحيد الذي يربط "جوجل فورم" بحساباتك وصيانة سياراتك آلياً وبدقة 100%. تمليك كامل للأبد.</p>
+        
+        <a href="assessment.html" class="btn-ai">
+            احجز نسختك بالخصم الحالي
+            <i class="fas fa-bolt"></i>
+        </a>
     </header>
 
-    <section class="features-showcase">
-        <div class="feature-item">
-            <i class="fas fa-chart-line-down"></i>
-            <h3>المحرك المالي الذكي</h3>
-            <p>حساب تلقائي لصافي أرباحك (V) وتكاليف الصيانة (U) واليوميات المتراكمة في أقل من ثانية وبدون خطأ بشري واحد.</p>
-        </div>
-        <div class="feature-item">
-            <i class="fab fa-telegram"></i>
-            <h3>إدارة من جيبك</h3>
-            <p>بوت تلجرام احترافي مربوط ببياناتك الحية؛ يرسل لك إحصائيات الأداء، وتقارير السائقين، ومسيرات الرواتب بضغطة زر.</p>
-        </div>
-        <div class="feature-item">
-            <i class="fas fa-shield-virus"></i>
-            <h3>تمليك سحابي مستقل</h3>
-            <p>بياناتك ملكك بالكامل داخل Google Drive الخاص بك. تكنولوجيا "CoreEngine" تضمن استقلالية تامة وحماية مطلقة لشركتك.</p>
-        </div>
-    </section>
-
-    <section style="padding: 100px 8%; text-align: center; background: rgba(0,0,0,0.3);">
-        <h2 style="font-size: 3rem; margin-bottom: 50px;">شاهد "العقل الرقمي" وهو يعمل</h2>
-        <div class="bot-interface" style="max-width: 500px; margin: auto;">
-            <div class="bot-header">
-                <div class="status-dot"></div>
-                <span>24Seven Bot Dispatcher</span>
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h3>الترحيل الذكي الفوري</h3>
+                <p>تحديث فوري لبيانات السائقين والسيارات واليوميات في أقل من ثانية وبدون أي تدخل بشري.</p>
             </div>
-            <div style="background: #2b5278; padding: 15px; border-radius: 15px 15px 0 15px; text-align: right; margin-bottom: 20px; font-size: 0.95rem;">
-                🛡️ أهلاً بك يا مدير.. تم ترحيل يومية "كابتن محمود" بنجاح. صافي ربح السيارة الحالي: 1,450 ج.م. هل تريد استخراج مسير الراتب الآن؟
+            <div class="feature-card">
+                <i class="fas fa-chart-pie"></i>
+                <h3>المحاسبة الرقمية الدقيقة</h3>
+                <p>حساب الصافي (V) وتكلفة الصيانة (U) واليوميات التراكمية (M, N, O) بمعادلات برمجية متطورة.</p>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="background: #242f3d; padding: 12px; border-radius: 10px; border: 1px solid #3d4b5b;">إحصائيات اليوم 📊</div>
-                <div style="background: #242f3d; padding: 12px; border-radius: 10px; border: 1px solid #3d4b5b;">حالة الصيانة 🛠️</div>
+            <div class="feature-card">
+                <i class="fas fa-fingerprint"></i>
+                <h3>خصوصية تامة (تمليك)</h3>
+                <p>بياناتك ليست على سيرفراتنا؛ هي بداخل Google Drive الخاص بك فقط. خصوصيتك هي أولويتنا.</p>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 80px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); opacity: 0.6;">
-        <p>© 2025 24SEVEN AI | الريادة في التحول الرقمي لقطاع الليموزين</p>
+    <section class="pricing-section">
+        <div class="pricing-card">
+            <div class="pricing-inner">
+                <h2 style="margin-bottom: 20px;">احصل على "العقل الرقمي" لشركتك</h2>
+                <div style="font-size: 3.5rem; font-weight: 900; color: var(--accent-blue);">999 <span style="font-size: 1.2rem; color: #9ca3af;">ج.م / نسخة التمليك</span></div>
+                <p style="text-decoration: line-through; color: #6b7280; font-size: 1.5rem; margin-top: -10px;">السعر الأصلي: 2,350 ج.م</p>
+                <ul style="list-style: none; margin: 30px 0; text-align: right; color: #d1d5db;">
+                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> تمليك البوت مدى الحياة</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> ربط تلقائي مع بوت تلجرام احترافي</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> نظام تنبيهات الصيانة الذكي</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> استخراج مسير الرواتب بصيغة DOC</li>
+                </ul>
+                <a href="assessment.html" class="btn-ai" style="width: 100%; justify-content: center;">
+                    تفعيل العرض الآن
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 24SEVEN AI Limousine Systems - Powering the future of transport</p>
     </footer>
+
+    <script>
+        function startTimer(duration) {
+            var timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                document.getElementById('hours').textContent = hours < 10 ? "0" + hours : hours;
+                document.getElementById('minutes').textContent = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById('seconds').textContent = seconds < 10 ? "0" + seconds : seconds;
+                if (--timer < 0) { timer = duration; }
+            }, 1000);
+        }
+        window.onload = function () { startTimer(20538); };
+    </script>
 </body>
 </html>
