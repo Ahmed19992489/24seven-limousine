@@ -3,276 +3,440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24Seven AI | مستقبل إدارة أساطيل الليموزين</title>
-    <meta name="description" content="أتمتة كاملة لشركات الليموزين باستخدام تقنيات AI و Google Cloud.">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>24Seven System | نظام إدارة الليموزين الذكي</title>
+    <meta name="description" content="أقوى نظام إدارة ليموزين عبر تلجرام. راقب الصيانة، احسب الرواتب، واملك بياناتك بالكامل بدون اشتراكات شهرية.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-deep: #030712;
-            --glass-bg: rgba(17, 24, 39, 0.7);
-            --accent-blue: #00d9ff;
-            --accent-purple: #7000ff;
-            --danger-neon: #ff2e2e;
-            --text-glow: 0 0 10px rgba(0, 217, 255, 0.5);
-            --border-glass: rgba(255, 255, 255, 0.1);
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --primary: #3b82f6;
+            --accent: #06b6d4;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
-        body { 
-            background-color: var(--bg-deep); 
-            color: white; 
-            line-height: 1.6; 
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
             overflow-x: hidden;
-            background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #030712 100%);
         }
 
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 1.2rem 5%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glass);
-            z-index: 1000;
+        /* --- Hero Section --- */
+        header {
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-        }
-
-        .logo { 
-            font-size: 1.8rem; 
-            font-weight: 900; 
-            color: var(--accent-blue); 
-            text-shadow: var(--text-glow);
-            letter-spacing: -1px;
-        }
-
-        .hero {
-            padding: 180px 5% 100px;
+            justify-content: center;
+            flex-direction: column;
             text-align: center;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
+            padding: 20px;
             position: relative;
         }
 
-        .timer-container {
-            margin-bottom: 30px;
-            display: inline-flex;
-            gap: 15px;
-            background: rgba(255, 46, 46, 0.1);
-            padding: 10px 25px;
-            border-radius: 15px;
-            border: 1px dashed var(--danger-neon);
+        header::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-        .timer-unit { text-align: center; }
-        .timer-unit span { display: block; font-size: 1.5rem; font-weight: 900; color: var(--danger-neon); }
-        .timer-label { font-size: 0.7rem; color: #9ca3af; }
 
-        .hero-badge {
-            background: var(--danger-neon);
-            color: white;
-            padding: 8px 25px;
-            border-radius: 50px;
+        h1 {
+            font-size: 3.5rem;
             font-weight: 900;
-            display: inline-block;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255, 46, 46, 0.4);
-            animation: pulse 2s infinite;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            background: linear-gradient(to bottom, #fff 30%, var(--accent-blue));
+        h1 span {
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 1.4rem;
-            color: #9ca3af;
-            max-width: 800px;
-            margin: 0 auto 40px;
+        p.sub-head {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 2rem;
         }
 
-        .price-hero {
-            margin-bottom: 40px;
-        }
-        .old-price-hero {
-            font-size: 1.8rem;
-            color: #6b7280;
-            text-decoration: line-through;
-            margin-left: 15px;
-        }
-        .new-price-hero {
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: var(--accent-blue);
-            text-shadow: var(--text-glow);
-        }
-
-        .btn-ai {
-            padding: 20px 50px;
-            border-radius: 15px;
-            font-weight: 900;
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
             text-decoration: none;
-            font-size: 1.3rem;
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            z-index: 10; /* لضمان أن الزر قابل للنقر فوق الخلفية */
+            position: relative;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 35px -5px rgba(6, 182, 212, 0.6);
+        }
+
+        /* --- Carousel (المعرض التفاعلي البديل للفيديو) --- */
+        .carousel-container {
+            width: 100%;
+            max-width: 900px;
+            height: 480px; /* ارتفاع مناسب */
+            position: relative;
+            margin: 3rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--bg-card);
+            direction: ltr; /* لجعل الترانزيشن يعمل بشكل صحيح */
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 12px;
-            background: var(--accent-blue);
-            color: #000;
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.4);
-        }
-
-        .btn-ai:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 0 50px rgba(0, 217, 255, 0.6);
-        }
-
-        .features { padding: 100px 5%; }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .feature-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--border-glass);
-            padding: 45px;
-            border-radius: 30px;
-            transition: 0.4s;
-        }
-        .feature-card:hover { border-color: var(--accent-blue); transform: translateY(-10px); }
-        .feature-card i { font-size: 3.5rem; color: var(--accent-blue); margin-bottom: 25px; }
-
-        .pricing-section {
-            padding: 100px 5%;
+            padding: 30px;
             text-align: center;
-        }
-        .pricing-card {
-            max-width: 650px;
-            margin: auto;
-            background: linear-gradient(145deg, var(--accent-purple), var(--accent-blue));
-            padding: 3px;
-            border-radius: 30px;
-        }
-        .pricing-inner {
-            background: var(--bg-deep);
-            padding: 60px;
-            border-radius: 27px;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 80%);
         }
 
-        footer { padding: 60px 5%; text-align: center; border-top: 1px solid var(--border-glass); color: #4b5563; }
+        .slide.active { opacity: 1; z-index: 1; }
+
+        /* Mockups Design */
+        .mockup-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide h3 {
+            font-size: 1.8rem; margin-bottom: 15px; color: var(--text-main); font-family: 'Cairo', sans-serif; direction: rtl;
+        }
+
+        .slide p {
+             font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 30px; font-family: 'Cairo', sans-serif; direction: rtl;
+        }
+
+        .fake-screen {
+            width: 85%;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: right;
+            font-family: monospace;
+            font-size: 0.95rem;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+            direction: rtl;
+        }
+
+        .fake-msg { color: #a3e635; margin-bottom: 10px; }
+        .fake-reply { color: #38bdf8; margin-bottom: 10px; padding-right: 15px; position: relative; }
+        .fake-reply::before { content: '>'; position: absolute; right: 0; color: var(--accent); }
+        .fake-alert { color: #ef4444; font-weight: bold; margin-bottom: 5px; }
+
+        /* Navigation Buttons */
+        .carousel-nav button {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); color: white; border: none;
+            width: 40px; height: 40px; cursor: pointer; z-index: 5; border-radius: 50%;
+            font-size: 1.2rem; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .carousel-nav button:hover { background: var(--primary); }
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        .carousel-dots {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 10px; z-index: 5;
+        }
+        .dot {
+            width: 12px; height: 12px; background: rgba(255,255,255,0.3);
+            border-radius: 50%; cursor: pointer; transition: 0.3s;
+        }
+        .dot.active { background: var(--accent); transform: scale(1.2); }
+
+        /* --- Features Grid --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title p { color: var(--accent); font-weight: bold; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .card h3 { margin-bottom: 10px; font-size: 1.4rem; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Pricing Badge */
+        .price-tag {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--success);
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #020617;
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .new-price-hero { font-size: 3rem; }
-            .btn-ai { width: 100%; justify-content: center; }
+            h1 { font-size: 2.5rem; }
+            .hero { padding-top: 40px; }
+            .carousel-container { height: 450px; }
+            .fake-screen { width: 95%; font-size: 0.8rem; }
+            .mockup-icon { font-size: 3rem; }
+            .slide h3 { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">24SEVEN AI</div>
-        <a href="assessment.html" class="btn-ai" style="padding: 10px 25px; font-size: 1rem; box-shadow: none;">اغتنم الخصم</a>
-    </nav>
-
     <header class="hero">
-        <div class="hero-badge">خصم 50% لفترة محدودة جداً</div>
+        <div class="price-tag">⚡ عرض خاص: امتلاك مدى الحياة بـ 999 جنيه فقط</div>
+        <h1>حول شركتك إلى <br><span>نظام إدارة آلي 100%</span></h1>
+        <p class="sub-head">
+            نظام 24Seven يربط جوجل فورم بتلجرام لإدارة السائقين، الصيانة، والرواتب آلياً.
+            <br>بدون محاسبين، وبدون أخطاء بشرية.
+        </p>
         
-        <br>
-        <div class="timer-container" id="countdown">
-            <div class="timer-unit"><span id="hours">05</span><div class="timer-label">ساعة</div></div>
-            <div class="timer-unit"><span id="minutes">42</span><div class="timer-label">دقيقة</div></div>
-            <div class="timer-unit"><span id="seconds">18</span><div class="timer-label">ثانية</div></div>
-        </div>
-
-        <h1>إدارة أسطولك بذكاء <br><span style="color: var(--accent-blue);">وقوة الـ AI الرقمية</span></h1>
-        
-        <div class="price-hero">
-            <span class="old-price-hero">2,350 ج.م</span>
-            <span class="new-price-hero">999 <span>ج.م</span></span>
-        </div>
-
-        <p>النظام الوحيد الذي يربط "جوجل فورم" بحساباتك وصيانة سياراتك آلياً وبدقة 100%. تمليك كامل للأبد.</p>
-        
-        <a href="assessment.html" class="btn-ai">
-            احجز نسختك بالخصم الحالي
-            <i class="fas fa-bolt"></i>
+        <a href="order.html" class="btn btn-primary">
+            <i class="fa-solid fa-rocket"></i> احصل على نسختك الآن
         </a>
-    </header>
 
-    <section class="features">
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-robot"></i>
-                <h3>الترحيل الذكي الفوري</h3>
-                <p>تحديث فوري لبيانات السائقين والسيارات واليوميات في أقل من ثانية وبدون أي تدخل بشري.</p>
+        <div class="carousel-container">
+            
+            <div class="slide active">
+                <i class="fa-brands fa-telegram mockup-icon"></i>
+                <h3>1. لوحة تحكم فورية (تلجرام)</h3>
+                <p>إدارة كاملة من موبايلك. ترحيل الرحلات وحساب الصافي بضغطة زر.</p>
+                <div class="fake-screen">
+                    <div class="fake-msg">👨‍✈️ كابتن محمد: تم تقفيل رحلة المطار.</div>
+                    <div class="fake-reply">🤖 النظام: تم الترحيل بنجاح.</div>
+                    <div class="fake-reply">💰 صافي الرحلة (V) للتوريد: 450 ج.م</div>
+                </div>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-chart-pie"></i>
-                <h3>المحاسبة الرقمية الدقيقة</h3>
-                <p>حساب الصافي (V) وتكلفة الصيانة (U) واليوميات التراكمية (M, N, O) بمعادلات برمجية متطورة.</p>
+
+            <div class="slide">
+                <i class="fa-solid fa-file-csv mockup-icon" style="color: #10b981;"></i>
+                <h3>2. شيتات منظمة آلياً (جوجل درايف)</h3>
+                <p>كل سيارة وكل سائق له ملف خاص يتم تحديثه لحظياً بدون تدخل منك.</p>
+                <div class="fake-screen" style="background: rgba(255,255,255,0.05); color: #fff;">
+                    [شيت: نيسان صني 1] <br>
+                    --------------------------<br>
+                    التاريخ | الكود | المحصل | الصافي (V) | التراكمي (W)<br>
+                    25/10 | #102 | 600ج | 450ج | 4550ج<br>
+                    26/10 | #103 | 800ج | 620ج | 5170ج<br>
+                </div>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-fingerprint"></i>
-                <h3>خصوصية تامة (تمليك)</h3>
-                <p>بياناتك ليست على سيرفراتنا؛ هي بداخل Google Drive الخاص بك فقط. خصوصيتك هي أولويتنا.</p>
+
+            <div class="slide">
+                <i class="fa-solid fa-triangle-exclamation mockup-icon" style="color: #ef4444;"></i>
+                <h3>3. حماية أصولك (تنبيهات الصيانة)</h3>
+                <p>لا داعي للقلق من نسيان غيار الزيت. النظام يراقب العداد وينبهك قبل الموعد.</p>
+                <div class="fake-screen">
+                    <div class="fake-reply">🤖 تقرير صيانة: تويوتا كورولا 2</div>
+                    <div class="fake-alert">⚠️ تنبيه هام:</div>
+                    <div class="fake-msg">متبقي 150 كم فقط على تغيير زيت الماكينة.</div>
+                    <div>يرجى توجيه السائق لأقرب مركز صيانة.</div>
+                </div>
+            </div>
+
+            <div class="carousel-nav">
+                <button class="prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next-btn" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+        </header>
+
+    <section class="container">
+        <div class="section-title">
+            <p>لماذا تختار 24Seven؟</p>
+            <h2>كل ما تحتاجه في مكان واحد</h2>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon-box"><i class="fa-solid fa-database"></i></div>
+                <h3>1. الترحيل الذكي</h3>
+                <p>بمجرد ملء السائق للفورم، النظام يوزع البيانات فوراً لصفحة السائق وصفحة السيارة ويسجل التوقيت بدقة.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box"><i class="fa-solid fa-calculator"></i></div>
+                <h3>2. المحرك المالي</h3>
+                <p>حساب آلي لصافي الربح (V) وتجنيب مصاريف الصيانة (U) وحساب التراكمي لحظة بلحظة.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <h3>3. تنبيهات الصيانة</h3>
+                <p>البوت يراقب العداد، ويرسل لك إنذاراً عند اقتراب موعد تغيير الزيت أو الفتيس قبلها بـ 200 كم.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3>4. مسير الرواتب (Payroll)</h3>
+                <p>ضغطة زر واحدة تستخرج ملف DOC رسمي يحتوي على كشف حساب السائق (يوميات، سلف، خصومات).</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box"><i class="fa-brands fa-telegram"></i></div>
+                <h3>5. لوحة تحكم تلجرام</h3>
+                <p>أزرار تفاعلية لعرض رحلات الغد، إحصائيات اليوم، وتسجيل السلف والخصومات من الموبايل.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>6. الخصوصية والتمليك</h3>
+                <p>أهم ميزة: الكود يعمل على Google Drive الخاص بك. لا أحد يرى بياناتك، وأنت المالك الوحيد للنظام.</p>
             </div>
         </div>
     </section>
 
-    <section class="pricing-section">
-        <div class="pricing-card">
-            <div class="pricing-inner">
-                <h2 style="margin-bottom: 20px;">احصل على "العقل الرقمي" لشركتك</h2>
-                <div style="font-size: 3.5rem; font-weight: 900; color: var(--accent-blue);">999 <span style="font-size: 1.2rem; color: #9ca3af;">ج.م / نسخة التمليك</span></div>
-                <p style="text-decoration: line-through; color: #6b7280; font-size: 1.5rem; margin-top: -10px;">السعر الأصلي: 2,350 ج.م</p>
-                <ul style="list-style: none; margin: 30px 0; text-align: right; color: #d1d5db;">
-                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> تمليك البوت مدى الحياة</li>
-                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> ربط تلقائي مع بوت تلجرام احترافي</li>
-                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> نظام تنبيهات الصيانة الذكي</li>
-                    <li><i class="fas fa-check-circle" style="color: var(--accent-blue); margin-left: 10px;"></i> استخراج مسير الرواتب بصيغة DOC</li>
-                </ul>
-                <a href="assessment.html" class="btn-ai" style="width: 100%; justify-content: center;">
-                    تفعيل العرض الآن
-                </a>
-            </div>
-        </div>
+    <section style="text-align: center; padding: 60px 20px; background: linear-gradient(to bottom, var(--bg-dark), #1e293b);">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">جاهز لتنظيم شركتك؟</h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px;">احصل على الكود الكامل + فيديو الشرح + الدعم الفني.</p>
+        <a href="order.html" class="btn btn-primary" style="padding: 20px 50px; font-size: 1.3rem;">
+            شراء النظام الآن (999 ج.م)
+        </a>
     </section>
 
     <footer>
-        <p>© 2025 24SEVEN AI Limousine Systems - Powering the future of transport</p>
+        <p>جميع الحقوق محفوظة © 2025 لنظام 24Seven Limousine</p>
     </footer>
 
     <script>
-        function startTimer(duration) {
-            var timer = duration, hours, minutes, seconds;
-            setInterval(function () {
-                hours = parseInt(timer / 3600, 10);
-                minutes = parseInt((timer % 3600) / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-                document.getElementById('hours').textContent = hours < 10 ? "0" + hours : hours;
-                document.getElementById('minutes').textContent = minutes < 10 ? "0" + minutes : minutes;
-                document.getElementById('seconds').textContent = seconds < 10 ? "0" + seconds : seconds;
-                if (--timer < 0) { timer = duration; }
-            }, 1000);
+        let slideIndex = 1;
+        let slideInterval;
+
+        // تشغيل المعرض تلقائياً عند تحميل الصفحة
+        document.addEventListener("DOMContentLoaded", function() {
+            showSlides(slideIndex);
+            startAutoPlay();
+        });
+
+        // وظائف التنقل
+        function moveSlide(n) {
+            showSlides(slideIndex += n);
+            resetAutoPlay(); // إعادة ضبط التوقيت عند الضغط اليدوي
         }
-        window.onload = function () { startTimer(20538); };
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+            resetAutoPlay();
+        }
+
+        // الوظيفة الرئيسية لعرض الشرائح
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].className = slides[i].className.replace(" active", "");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].className += " active";
+            dots[slideIndex-1].className += " active";
+        }
+
+        // التشغيل التلقائي كل 5 ثواني
+        function startAutoPlay() {
+            slideInterval = setInterval(function() {
+                moveSlide(1);
+            }, 5000); // 5000 ميلي ثانية = 5 ثواني
+        }
+
+        // إيقاف وإعادة تشغيل المؤقت عند التدخل اليدوي
+        function resetAutoPlay() {
+            clearInterval(slideInterval);
+            startAutoPlay();
+        }
     </script>
 </body>
 </html>
