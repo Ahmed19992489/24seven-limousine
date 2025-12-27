@@ -19,6 +19,7 @@
             --text-muted: #94a3b8;
             --success: #10b981;
             --danger: #ef4444;
+            --whatsapp: #25D366;
             --gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
         }
 
@@ -73,6 +74,78 @@
             margin-bottom: 2rem;
         }
 
+        /* --- New Pricing Tag (Updated) --- */
+        .price-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            padding: 10px 30px;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--danger);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .new-price {
+            color: var(--success);
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .discount-badge {
+            background: var(--danger);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Countdown Timer --- */
+        .timer-box {
+            margin: 20px 0 30px 0;
+            text-align: center;
+        }
+        .timer-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .timer-label span { color: var(--danger); font-weight: bold; }
+        
+        .timer-display {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        
+        .time-unit {
+            background: rgba(0,0,0,0.3);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            min-width: 60px;
+        }
+        .time-val { font-size: 1.5rem; color: var(--accent); display: block; }
+        .time-text { font-size: 0.8rem; color: var(--text-muted); }
+
         /* --- Buttons --- */
         .btn {
             display: inline-block;
@@ -84,7 +157,7 @@
             font-size: 1.1rem;
             border: none;
             cursor: pointer;
-            z-index: 10; /* لضمان أن الزر قابل للنقر فوق الخلفية */
+            z-index: 10;
             position: relative;
         }
 
@@ -99,11 +172,35 @@
             box-shadow: 0 20px 35px -5px rgba(6, 182, 212, 0.6);
         }
 
-        /* --- Carousel (المعرض التفاعلي البديل للفيديو) --- */
+        /* --- Floating Whatsapp --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* --- Carousel --- */
         .carousel-container {
             width: 100%;
             max-width: 900px;
-            height: 480px; /* ارتفاع مناسب */
+            height: 480px;
             position: relative;
             margin: 3rem auto;
             border-radius: 20px;
@@ -111,7 +208,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255,255,255,0.1);
             background: var(--bg-card);
-            direction: ltr; /* لجعل الترانزيشن يعمل بشكل صحيح */
+            direction: ltr;
         }
 
         .slide {
@@ -130,7 +227,6 @@
 
         .slide.active { opacity: 1; z-index: 1; }
 
-        /* Mockups Design */
         .mockup-icon {
             font-size: 4rem;
             margin-bottom: 20px;
@@ -165,7 +261,6 @@
         .fake-reply::before { content: '>'; position: absolute; right: 0; color: var(--accent); }
         .fake-alert { color: #ef4444; font-weight: bold; margin-bottom: 5px; }
 
-        /* Navigation Buttons */
         .carousel-nav button {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(255,255,255,0.1); color: white; border: none;
@@ -235,18 +330,6 @@
         .card h3 { margin-bottom: 10px; font-size: 1.4rem; }
         .card p { color: var(--text-muted); font-size: 0.95rem; }
 
-        /* Pricing Badge */
-        .price-tag {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            padding: 10px 20px;
-            border-radius: 30px;
-            border: 1px solid var(--success);
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
         /* Footer */
         footer {
             background: #020617;
@@ -268,15 +351,34 @@
 </head>
 <body>
 
+    <a href="https://wa.me/201121748885" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <header class="hero">
-        <div class="price-tag">⚡ عرض خاص: امتلاك مدى الحياة بـ 999 جنيه فقط</div>
+        
+        <div class="price-container">
+            <span class="discount-badge">خصم 60%</span>
+            <span class="old-price">2500 ج.م</span>
+            <span class="new-price">999 ج.م</span>
+        </div>
+
         <h1>حول شركتك إلى <br><span>نظام إدارة آلي 100%</span></h1>
         <p class="sub-head">
             نظام 24Seven يربط جوجل فورم بتلجرام لإدارة السائقين، الصيانة، والرواتب آلياً.
             <br>بدون محاسبين، وبدون أخطاء بشرية.
         </p>
+
+        <div class="timer-box">
+            <div class="timer-label">🔥 العرض ساري لأول 3 عملاء فقط (متبقي <span>5 ساعات</span>)</div>
+            <div class="timer-display" id="countdown">
+                <div class="time-unit"><span class="time-val" id="secs">00</span><span class="time-text">ثانية</span></div>
+                <div class="time-unit"><span class="time-val" id="mins">00</span><span class="time-text">دقيقة</span></div>
+                <div class="time-unit"><span class="time-val" id="hours">05</span><span class="time-text">ساعة</span></div>
+            </div>
+        </div>
         
-        <a href="order.html" class="btn btn-primary">
+        <a href="assessment.html" class="btn btn-primary">
             <i class="fa-solid fa-rocket"></i> احصل على نسختك الآن
         </a>
 
@@ -378,7 +480,7 @@
     <section style="text-align: center; padding: 60px 20px; background: linear-gradient(to bottom, var(--bg-dark), #1e293b);">
         <h2 style="font-size: 2.5rem; margin-bottom: 20px;">جاهز لتنظيم شركتك؟</h2>
         <p style="color: var(--text-muted); margin-bottom: 30px;">احصل على الكود الكامل + فيديو الشرح + الدعم الفني.</p>
-        <a href="order.html" class="btn btn-primary" style="padding: 20px 50px; font-size: 1.3rem;">
+        <a href="assessment.html" class="btn btn-primary" style="padding: 20px 50px; font-size: 1.3rem;">
             شراء النظام الآن (999 ج.م)
         </a>
     </section>
@@ -388,19 +490,19 @@
     </footer>
 
     <script>
+        // --- 1. كود المعرض (Carousel) ---
         let slideIndex = 1;
         let slideInterval;
 
-        // تشغيل المعرض تلقائياً عند تحميل الصفحة
         document.addEventListener("DOMContentLoaded", function() {
             showSlides(slideIndex);
             startAutoPlay();
+            startTimer(); // تشغيل العداد
         });
 
-        // وظائف التنقل
         function moveSlide(n) {
             showSlides(slideIndex += n);
-            resetAutoPlay(); // إعادة ضبط التوقيت عند الضغط اليدوي
+            resetAutoPlay();
         }
 
         function currentSlide(n) {
@@ -408,7 +510,6 @@
             resetAutoPlay();
         }
 
-        // الوظيفة الرئيسية لعرض الشرائح
         function showSlides(n) {
             let i;
             let slides = document.getElementsByClassName("slide");
@@ -425,17 +526,44 @@
             dots[slideIndex-1].className += " active";
         }
 
-        // التشغيل التلقائي كل 5 ثواني
         function startAutoPlay() {
             slideInterval = setInterval(function() {
                 moveSlide(1);
-            }, 5000); // 5000 ميلي ثانية = 5 ثواني
+            }, 5000);
         }
 
-        // إيقاف وإعادة تشغيل المؤقت عند التدخل اليدوي
         function resetAutoPlay() {
             clearInterval(slideInterval);
             startAutoPlay();
+        }
+
+        // --- 2. كود العداد التنازلي (5 ساعات) ---
+        function startTimer() {
+            // تحديد الوقت (5 ساعات بالثواني)
+            let duration = 5 * 60 * 60; 
+            const displayHours = document.getElementById('hours');
+            const displayMins = document.getElementById('mins');
+            const displaySecs = document.getElementById('secs');
+
+            let timer = setInterval(function () {
+                let hours = Math.floor(duration / 3600);
+                let minutes = Math.floor((duration % 3600) / 60);
+                let seconds = duration % 60;
+
+                // إضافة صفر في البداية إذا كان الرقم أقل من 10
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                displayHours.textContent = hours;
+                displayMins.textContent = minutes;
+                displaySecs.textContent = seconds;
+
+                if (--duration < 0) {
+                    // عند انتهاء الوقت، يعيد نفسه (Loop) للحفاظ على الضغط النفسي للعميل
+                    duration = 5 * 60 * 60; 
+                }
+            }, 1000);
         }
     </script>
 </body>
