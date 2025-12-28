@@ -222,7 +222,7 @@
             transform: translateY(-5px) scale(1.1);
         }
 
-        /* --- Video Section (UPDATED) --- */
+        /* --- Video Section (YOUTUBE EMBED) --- */
         .video-section {
             padding: 60px 20px;
             background: linear-gradient(to bottom, var(--bg-dark), #1e293b);
@@ -236,24 +236,27 @@
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px;
-            padding: 10px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            /* Important for iframe responsiveness */
-            position: relative;
             overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            /* نسبة العرض للارتفاع 16:9 */
+            padding-bottom: 56.25%; 
+            height: 0;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         .video-title {
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             font-size: 2rem;
             color: var(--text-main);
-        }
-        
-        /* جعل الفيديو متجاوب */
-        .telegram-embed {
-            width: 100%;
-            display: flex;
-            justify-content: center;
         }
 
         /* --- Carousel --- */
@@ -501,21 +504,17 @@
 
     <section class="video-section">
         <h2 class="video-title">شاهد النظام يعمل على أرض الواقع 🎥</h2>
+        
         <div class="video-wrapper">
-            <div class="telegram-embed">
-                <iframe 
-                    src="https://t.me/sys_files_247/2?embed=1" 
-                    frameborder="0" 
-                    width="100%" 
-                    height="400" 
-                    style="border-radius: 12px; overflow: hidden;">
-                </iframe>
-            </div>
-            
-            <p style="margin-top: 15px; color: var(--text-muted);">
-                إذا لم يظهر الفيديو، 
-                <a href="https://t.me/sys_files_247/2" target="_blank" style="color: var(--primary); text-decoration: underline;">اضغط هنا للمشاهدة على تيليجرام</a>
-            </p>
+            <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/3pw9V7pA2qg" 
+                title="نظام إدارة الليموزين" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
         </div>
     </section>
 
