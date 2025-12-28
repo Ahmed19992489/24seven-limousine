@@ -20,6 +20,7 @@
             --success: #10b981;
             --danger: #ef4444;
             --whatsapp: #25D366;
+            --telegram: #229ED9;
             --gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
         }
 
@@ -44,6 +45,7 @@
             background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
             padding: 20px;
             position: relative;
+            padding-bottom: 60px;
         }
 
         header::before {
@@ -52,6 +54,12 @@
             width: 100%;
             height: 100%;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+
+        /* للتأكد من أن المحتوى فوق الخلفية */
+        header > * {
+            z-index: 1;
         }
 
         h1 {
@@ -74,7 +82,7 @@
             margin-bottom: 2rem;
         }
 
-        /* --- New Pricing Tag (Updated) --- */
+        /* --- Pricing Tag --- */
         .price-container {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--accent);
@@ -147,9 +155,19 @@
         .time-text { font-size: 0.8rem; color: var(--text-muted); }
 
         /* --- Buttons --- */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
         .btn {
-            display: inline-block;
-            padding: 1rem 3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
@@ -157,8 +175,7 @@
             font-size: 1.1rem;
             border: none;
             cursor: pointer;
-            z-index: 10;
-            position: relative;
+            gap: 10px;
         }
 
         .btn-primary {
@@ -170,6 +187,18 @@
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 20px 35px -5px rgba(6, 182, 212, 0.6);
+        }
+
+        .btn-telegram {
+            background: var(--telegram);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(34, 158, 217, 0.4);
+        }
+
+        .btn-telegram:hover {
+            transform: translateY(-3px);
+            background: #1b86b9;
+            box-shadow: 0 20px 35px -5px rgba(34, 158, 217, 0.6);
         }
 
         /* --- Floating Whatsapp --- */
@@ -196,13 +225,37 @@
             transform: translateY(-5px) scale(1.1);
         }
 
+        /* --- Video Section (NEW) --- */
+        .video-section {
+            padding: 40px 20px;
+            background: linear-gradient(to bottom, var(--bg-dark), #1e293b);
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .video-wrapper {
+            max-width: 700px;
+            margin: 20px auto;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        
+        .video-title {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: var(--text-main);
+        }
+
         /* --- Carousel --- */
         .carousel-container {
             width: 100%;
             max-width: 900px;
             height: 480px;
             position: relative;
-            margin: 3rem auto;
+            margin: 2rem auto 0;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -341,11 +394,13 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
-            .hero { padding-top: 40px; }
+            header { padding-top: 40px; }
             .carousel-container { height: 450px; }
             .fake-screen { width: 95%; font-size: 0.8rem; }
             .mockup-icon { font-size: 3rem; }
             .slide h3 { font-size: 1.4rem; }
+            .btn-container { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
@@ -378,9 +433,14 @@
             </div>
         </div>
         
-        <a href="assessment.html" class="btn btn-primary">
-            <i class="fa-solid fa-rocket"></i> احصل على نسختك الآن
-        </a>
+        <div class="btn-container">
+            <a href="assessment.html" class="btn btn-primary">
+                <i class="fa-solid fa-rocket"></i> احصل على نسختك الآن
+            </a>
+            <a href="https://t.me/limo212_bot" target="_blank" class="btn btn-telegram">
+                <i class="fa-brands fa-telegram"></i> جرب البوت مجاناً
+            </a>
+        </div>
 
         <div class="carousel-container">
             
@@ -430,7 +490,14 @@
                 <span class="dot" onclick="currentSlide(3)"></span>
             </div>
         </div>
-        </header>
+    </header>
+
+    <section class="video-section">
+        <h2 class="video-title">شاهد النظام يعمل على أرض الواقع 🎥</h2>
+        <div class="video-wrapper">
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="sys_files_247/2" data-width="100%" data-userpic="false" data-color="3b82f6" data-dark="1"></script>
+        </div>
+    </section>
 
     <section class="container">
         <div class="section-title">
@@ -480,9 +547,14 @@
     <section style="text-align: center; padding: 60px 20px; background: linear-gradient(to bottom, var(--bg-dark), #1e293b);">
         <h2 style="font-size: 2.5rem; margin-bottom: 20px;">جاهز لتنظيم شركتك؟</h2>
         <p style="color: var(--text-muted); margin-bottom: 30px;">احصل على الكود الكامل + فيديو الشرح + الدعم الفني.</p>
-        <a href="assessment.html" class="btn btn-primary" style="padding: 20px 50px; font-size: 1.3rem;">
-            شراء النظام الآن (999 ج.م)
-        </a>
+        <div class="btn-container">
+            <a href="assessment.html" class="btn btn-primary" style="padding: 20px 50px; font-size: 1.3rem;">
+                شراء النظام الآن (999 ج.م)
+            </a>
+            <a href="https://t.me/limo212_bot" target="_blank" class="btn btn-telegram" style="padding: 20px 50px; font-size: 1.3rem;">
+                <i class="fa-brands fa-telegram"></i> التواصل عبر البوت
+            </a>
+        </div>
     </section>
 
     <footer>
