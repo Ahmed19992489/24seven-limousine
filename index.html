@@ -57,10 +57,7 @@
             z-index: 0;
         }
 
-        /* للتأكد من أن المحتوى فوق الخلفية */
-        header > * {
-            z-index: 1;
-        }
+        header > * { z-index: 1; }
 
         h1 {
             font-size: 3.5rem;
@@ -225,28 +222,38 @@
             transform: translateY(-5px) scale(1.1);
         }
 
-        /* --- Video Section (NEW) --- */
+        /* --- Video Section (UPDATED) --- */
         .video-section {
-            padding: 40px 20px;
+            padding: 60px 20px;
             background: linear-gradient(to bottom, var(--bg-dark), #1e293b);
             text-align: center;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .video-wrapper {
-            max-width: 700px;
-            margin: 20px auto;
+            max-width: 800px;
+            margin: 30px auto;
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px;
-            padding: 20px;
+            padding: 10px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            /* Important for iframe responsiveness */
+            position: relative;
+            overflow: hidden;
         }
         
         .video-title {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             font-size: 2rem;
             color: var(--text-main);
+        }
+        
+        /* جعل الفيديو متجاوب */
+        .telegram-embed {
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         /* --- Carousel --- */
@@ -495,7 +502,20 @@
     <section class="video-section">
         <h2 class="video-title">شاهد النظام يعمل على أرض الواقع 🎥</h2>
         <div class="video-wrapper">
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="sys_files_247/2" data-width="100%" data-userpic="false" data-color="3b82f6" data-dark="1"></script>
+            <div class="telegram-embed">
+                <iframe 
+                    src="https://t.me/sys_files_247/2?embed=1" 
+                    frameborder="0" 
+                    width="100%" 
+                    height="400" 
+                    style="border-radius: 12px; overflow: hidden;">
+                </iframe>
+            </div>
+            
+            <p style="margin-top: 15px; color: var(--text-muted);">
+                إذا لم يظهر الفيديو، 
+                <a href="https://t.me/sys_files_247/2" target="_blank" style="color: var(--primary); text-decoration: underline;">اضغط هنا للمشاهدة على تيليجرام</a>
+            </p>
         </div>
     </section>
 
