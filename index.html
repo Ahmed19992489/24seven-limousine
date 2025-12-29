@@ -28,6 +28,9 @@
             --whatsapp: #25D366;
             --telegram: #229ED9;
             --gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            /* لون جديد لزر التجربة */
+            --demo-color: #f59e0b; 
+            --demo-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -204,6 +207,19 @@
             box-shadow: 0 20px 35px -5px rgba(34, 158, 217, 0.6);
         }
 
+        /* زر التجربة الجديد */
+        .btn-demo {
+            background: var(--demo-gradient);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4);
+        }
+        
+        .btn-demo:hover {
+            transform: translateY(-3px);
+            background: #d97706;
+            box-shadow: 0 20px 35px -5px rgba(245, 158, 11, 0.6);
+        }
+
         /* --- Floating Buttons --- */
         .floating-btn {
             position: fixed;
@@ -249,19 +265,29 @@
             right: 75px;
         }
 
+        /* 1. واتساب */
         .whatsapp-float {
             bottom: 25px;
             background-color: var(--whatsapp);
         }
 
+        /* 2. تليجرام المبيعات */
         .telegram-float {
             bottom: 100px; 
             background-color: var(--telegram);
             font-size: 30px;
         }
 
-        .buy-float {
+        /* 3. زر التجربة (جديد) */
+        .trial-float {
             bottom: 175px;
+            background-color: var(--demo-color);
+            font-size: 28px;
+        }
+
+        /* 4. زر الشراء (الأهم) */
+        .buy-float {
+            bottom: 250px;
             background: var(--gradient);
             font-size: 26px;
             animation: pulse-btn 2s infinite; 
@@ -484,8 +510,12 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
     
-    <a href="https://t.me/limo212_bot" class="floating-btn telegram-float" target="_blank" title="تجربة النظام (Live Demo)">
+    <a href="https://t.me/limo212_bot" class="floating-btn telegram-float" target="_blank" title="بوت المبيعات">
         <i class="fa-brands fa-telegram"></i>
+    </a>
+
+    <a href="https://t.me/YOUR_ADMIN_BOT_USERNAME?start=demo" class="floating-btn trial-float" target="_blank" title="بوت التجربة (Live Demo)">
+        <i class="fa-solid fa-robot"></i>
     </a>
 
     <a href="assessment.html" class="floating-btn buy-float" title="اشترِ النظام الآن">
@@ -519,12 +549,17 @@
             <a href="assessment.html" class="btn btn-primary">
                 <i class="fa-solid fa-rocket"></i> احصل على نسختك الآن
             </a>
+            
             <a href="https://t.me/limo212_bot" target="_blank" class="btn btn-telegram">
-                <i class="fa-solid fa-robot"></i> تجربة لوحة المدير (Live Demo)
+                <i class="fa-brands fa-telegram"></i> تواصل مع المبيعات
+            </a>
+
+            <a href="https://t.me/YOUR_ADMIN_BOT_USERNAME?start=demo" target="_blank" class="btn btn-demo">
+                <i class="fa-solid fa-laptop-code"></i> جرب بنفسك (بوت الإدارة)
             </a>
         </div>
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 10px;">
-            * جرب بنفسك إدارة السائقين والسيارات فوراً
+            * جرب بنفسك إدارة السائقين والسيارات فوراً عبر بوت الإدارة
         </p>
 
         <div class="carousel-container">
@@ -665,7 +700,10 @@
                 شراء النظام الآن (999 ج.م)
             </a>
             <a href="https://t.me/limo212_bot" target="_blank" class="btn btn-telegram" style="padding: 20px 50px; font-size: 1.3rem;">
-                <i class="fa-solid fa-robot"></i> تجربة لوحة المدير (Live Demo)
+                <i class="fa-brands fa-telegram"></i> تواصل مع المبيعات
+            </a>
+            <a href="https://t.me/YOUR_ADMIN_BOT_USERNAME?start=demo" target="_blank" class="btn btn-demo" style="padding: 20px 50px; font-size: 1.3rem;">
+                <i class="fa-solid fa-robot"></i> تجربة لوحة المدير
             </a>
         </div>
     </section>
