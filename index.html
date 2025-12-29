@@ -198,13 +198,10 @@
             box-shadow: 0 20px 35px -5px rgba(34, 158, 217, 0.6);
         }
 
-        /* --- Floating Whatsapp --- */
-        .whatsapp-float {
+        /* --- Floating Buttons (UPDATED) --- */
+        .floating-btn {
             position: fixed;
-            bottom: 25px;
             right: 25px;
-            background-color: var(--whatsapp);
-            color: white;
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -212,14 +209,28 @@
             align-items: center;
             justify-content: center;
             font-size: 35px;
-            box-shadow: 2px 2px 20px rgba(37, 211, 102, 0.4);
+            color: white;
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
             z-index: 100;
             transition: 0.3s;
             text-decoration: none;
         }
 
-        .whatsapp-float:hover {
+        .floating-btn:hover {
             transform: translateY(-5px) scale(1.1);
+        }
+
+        /* زر الواتساب (تحت) */
+        .whatsapp-float {
+            bottom: 25px;
+            background-color: var(--whatsapp);
+        }
+
+        /* زر التليجرام (فوق الواتساب بـ 80 بكسل) */
+        .telegram-float {
+            bottom: 100px; /* 25px + 60px + 15px margin */
+            background-color: var(--telegram);
+            font-size: 30px; /* أصغر قليلاً لتناسب الأيقونة */
         }
 
         /* --- Video Section (YOUTUBE EMBED) --- */
@@ -416,8 +427,12 @@
 </head>
 <body>
 
-    <a href="https://wa.me/201121748885" class="whatsapp-float" target="_blank" title="تواصل معنا">
+    <a href="https://wa.me/201121748885" class="floating-btn whatsapp-float" target="_blank" title="واتساب">
         <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    
+    <a href="https://t.me/limo212_bot" class="floating-btn telegram-float" target="_blank" title="بوت تليجرام">
+        <i class="fa-brands fa-telegram"></i>
     </a>
 
     <header class="hero">
