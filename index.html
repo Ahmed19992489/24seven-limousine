@@ -204,7 +204,7 @@
             box-shadow: 0 20px 35px -5px rgba(34, 158, 217, 0.6);
         }
 
-        /* --- Floating Buttons (Enhanced UX) --- */
+        /* --- Floating Buttons --- */
         .floating-btn {
             position: fixed;
             right: 25px;
@@ -226,7 +226,6 @@
             transform: translateY(-5px) scale(1.1);
         }
 
-        /* إضافة تلميح (Tooltip) عند مرور الماوس لتحسين UX */
         .floating-btn::after {
             content: attr(title); 
             position: absolute;
@@ -250,20 +249,17 @@
             right: 75px;
         }
 
-        /* 1. زر الواتساب (أسفل) */
         .whatsapp-float {
             bottom: 25px;
             background-color: var(--whatsapp);
         }
 
-        /* 2. زر التليجرام (وسط) */
         .telegram-float {
             bottom: 100px; 
             background-color: var(--telegram);
             font-size: 30px;
         }
 
-        /* 3. زر الشراء (أعلى) - مميز جداً */
         .buy-float {
             bottom: 175px;
             background: var(--gradient);
@@ -443,7 +439,7 @@
         .card h3 { margin-bottom: 10px; font-size: 1.4rem; }
         .card p { color: var(--text-muted); font-size: 0.95rem; }
 
-        /* --- FAQ Section (NEW) --- */
+        /* --- FAQ Section --- */
         .faq-section {
             background: rgba(255,255,255,0.02);
             border-radius: 20px;
@@ -488,7 +484,7 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
     
-    <a href="https://t.me/limo212_bot" class="floating-btn telegram-float" target="_blank" title="بوت التليجرام">
+    <a href="https://t.me/limo212_bot" class="floating-btn telegram-float" target="_blank" title="تجربة النظام (Live Demo)">
         <i class="fa-brands fa-telegram"></i>
     </a>
 
@@ -524,9 +520,12 @@
                 <i class="fa-solid fa-rocket"></i> احصل على نسختك الآن
             </a>
             <a href="https://t.me/limo212_bot" target="_blank" class="btn btn-telegram">
-                <i class="fa-brands fa-telegram"></i> جرب البوت مجاناً
+                <i class="fa-solid fa-robot"></i> تجربة لوحة المدير (Live Demo)
             </a>
         </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 10px;">
+            * جرب بنفسك إدارة السائقين والسيارات فوراً
+        </p>
 
         <div class="carousel-container">
             
@@ -666,7 +665,7 @@
                 شراء النظام الآن (999 ج.م)
             </a>
             <a href="https://t.me/limo212_bot" target="_blank" class="btn btn-telegram" style="padding: 20px 50px; font-size: 1.3rem;">
-                <i class="fa-brands fa-telegram"></i> التواصل عبر البوت
+                <i class="fa-solid fa-robot"></i> تجربة لوحة المدير (Live Demo)
             </a>
         </div>
     </section>
