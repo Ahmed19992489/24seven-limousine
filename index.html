@@ -198,7 +198,7 @@
             box-shadow: 0 20px 35px -5px rgba(34, 158, 217, 0.6);
         }
 
-        /* --- Floating Buttons (UPDATED) --- */
+        /* --- Floating Buttons (Enhanced UX) --- */
         .floating-btn {
             position: fixed;
             right: 25px;
@@ -212,7 +212,7 @@
             color: white;
             box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
             z-index: 100;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             text-decoration: none;
         }
 
@@ -220,17 +220,56 @@
             transform: translateY(-5px) scale(1.1);
         }
 
-        /* زر الواتساب (تحت) */
+        /* إضافة تلميح (Tooltip) عند مرور الماوس لتحسين UX */
+        .floating-btn::after {
+            content: attr(title); /* يأخذ النص من خاصية title */
+            position: absolute;
+            right: 70px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: 'Cairo', sans-serif;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .floating-btn:hover::after {
+            opacity: 1;
+            visibility: visible;
+            right: 75px;
+        }
+
+        /* زر الواتساب (أسفل) */
         .whatsapp-float {
             bottom: 25px;
             background-color: var(--whatsapp);
         }
 
-        /* زر التليجرام (فوق الواتساب بـ 80 بكسل) */
+        /* زر التليجرام (وسط) */
         .telegram-float {
-            bottom: 100px; /* 25px + 60px + 15px margin */
+            bottom: 100px; 
             background-color: var(--telegram);
-            font-size: 30px; /* أصغر قليلاً لتناسب الأيقونة */
+            font-size: 30px;
+        }
+
+        /* زر الشراء (أعلى) - مميز جداً */
+        .buy-float {
+            bottom: 175px;
+            background: var(--gradient);
+            font-size: 26px;
+            animation: pulse-btn 2s infinite; /* نبض لجذب الانتباه */
+        }
+
+        /* أنيميشن النبض لزر الشراء */
+        @keyframes pulse-btn {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
         }
 
         /* --- Video Section (YOUTUBE EMBED) --- */
@@ -427,12 +466,16 @@
 </head>
 <body>
 
-    <a href="https://wa.me/201121748885" class="floating-btn whatsapp-float" target="_blank" title="واتساب">
+    <a href="https://wa.me/201121748885" class="floating-btn whatsapp-float" target="_blank" title="تواصل واتساب">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
     
-    <a href="https://t.me/limo212_bot" class="floating-btn telegram-float" target="_blank" title="بوت تليجرام">
+    <a href="https://t.me/limo212_bot" class="floating-btn telegram-float" target="_blank" title="بوت التليجرام">
         <i class="fa-brands fa-telegram"></i>
+    </a>
+
+    <a href="assessment.html" class="floating-btn buy-float" title="اشترِ النظام الآن">
+        <i class="fa-solid fa-cart-shopping"></i>
     </a>
 
     <header class="hero">
